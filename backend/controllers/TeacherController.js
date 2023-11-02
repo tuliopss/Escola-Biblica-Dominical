@@ -43,4 +43,33 @@ module.exports = class TeacherController {
         .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
     }
   }
+
+  static async login(req, res) {
+    const { email, password } = req.body;
+
+    const teacher = await Teacher.findOne({ where: { email: email } });
+
+    if (!teacher) {
+      res.status(404).json({ errors: ["Usuário não encontrado"] });
+      return;
+    }
+
+    const checkPassword = await bcrypt.compare(password, teacher.password);
+
+    if (!checkPassword) {
+      res.status(422).json({ errors: ["Informe a senha correta"] });
+      return;
+    }
+
+    res.status(201).json({
+      id: teacher.id,
+      token: TeacherController.generateToken(teacher.id),
+    });
+  }
+
+  static async getCurrentUser(req, res) {
+    const user = req.teacher;
+
+    res.status(200).json(user);
+  }
 };

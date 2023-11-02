@@ -35,14 +35,14 @@ const authGuard = async (req, res, next) => {
   //check if token is valid
   try {
     const verified = jwt.verify(token, jwtSecret);
-    console.log("VERIFIED: ", verified);
-    const teacher = await Student.findByPk(verified.id);
+    // console.log("VERIFIED: ", verified);
+    const teacher = await Teacher.findByPk(verified.id);
+
     if (teacher) {
       // Remova a senha do objeto antes de enviar a resposta
       teacher.password = undefined;
-
       req.teacher = teacher;
-      console.log(req.teacher);
+      console.log("OIII", req.teacher);
       next();
     }
     // req.user = await Teacher.findOne({ where: { id: verified.id } });
