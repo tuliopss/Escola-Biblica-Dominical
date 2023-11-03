@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const studentsRoutes = require("./routes/StudentRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
+const classroomRoutes = require("./routes/ClassroomRoutes");
 const app = express();
 const port = 3000;
 
@@ -20,6 +21,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 //Routes
 app.use("/student", studentsRoutes);
 app.use("/teacher", teacherRoutes);
+app.use("/classroom", classroomRoutes);
 
 conn
   .sync()

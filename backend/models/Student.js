@@ -4,15 +4,15 @@ const db = require("../db/conn");
 const Student = db.define("aluno", {
   nome: {
     type: DataTypes.STRING,
-    require: true,
+    required: true,
   },
   email: {
     type: DataTypes.STRING,
-    require: true,
+    required: true,
   },
   serie: {
     type: DataTypes.INTEGER,
-    require: true,
+    required: true,
   },
   presenca: {
     type: DataTypes.BOOLEAN,

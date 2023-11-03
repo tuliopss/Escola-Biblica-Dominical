@@ -15,4 +15,6 @@ const studentInsertValidations = () => {
   ];
 };
 
+const studentUpdateValidations = () => {};
+
 module.exports = studentInsertValidations;
