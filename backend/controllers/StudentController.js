@@ -43,6 +43,62 @@ module.exports = class StudentController {
     }
   }
 
+  static async getAllStudents(req, res) {
+    try {
+      const students = await Student.findAll({ raw: true });
+
+      res.status(200).json(students);
+    } catch (error) {
+      res
+        .status(404)
+        .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
+    }
+  }
+
+  // static async deleteStudent(req, res) {
+  //   const id = req.params.id;
+
+  //   try {
+  //     const student = await Student.destroy({ where: { id: id } });
+
+  //     res
+  //       .status(200)
+  //       .json({ message: "Usuário deletado com sucesso: ", student });
+  //   } catch (error) {
+  //     res
+  //       .status(404)
+  //       .json({ errors: ["Houveu um erro, tente novamente mais tarde"] });
+  //   }
+  // }
+  static async deleteStudent(req, res) {
+    const id = req.params.id;
+
+    const student = await Student.findByPk(id);
+
+    if (!student) {
+      res.status(404).json({ errors: ["Estudante não encontrado."] });
+      return;
+    }
+  }
+
+  static async getStudentById(req, res) {
+    const id = req.params.id;
+
+    try {
+      const student = await Student.findByPk(id);
+
+      if (!student) {
+        res.status(400).json({ errors: ["Estudante não encontrado"] });
+        return;
+      }
+      res.status(200).json(student);
+    } catch (error) {
+      res
+        .status(404)
+        .json({ errors: ["Houveu um erro, tente novamente mais tarde"] });
+    }
+  }
+
   static async getCurrentUser(req, res) {
     const teacher = req.teacher;
 

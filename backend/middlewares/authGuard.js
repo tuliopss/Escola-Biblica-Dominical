@@ -30,7 +30,10 @@ const authGuard = async (req, res, next) => {
   const token = authHeader && authHeader.split(" ")[1]; // TOKEN EXAMPLE: Bearer djar3uieo3koddka. Split separa em um array e pega o [1]
 
   //check if a header has a token
-  if (!token) return res.status(401).json({ errors: ["Acesso negado!"] });
+  if (!token) {
+    res.status(401).json({ errors: ["Acesso negado!"] });
+    return;
+  }
 
   //check if token is valid
   try {
@@ -42,7 +45,6 @@ const authGuard = async (req, res, next) => {
       // Remova a senha do objeto antes de enviar a resposta
       teacher.password = undefined;
       req.teacher = teacher;
-      console.log("OIII", req.teacher);
       next();
     }
     // req.user = await Teacher.findOne({ where: { id: verified.id } });
