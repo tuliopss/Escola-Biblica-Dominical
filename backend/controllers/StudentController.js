@@ -4,16 +4,6 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 
 module.exports = class StudentController {
-  static generateToken = (id) => {
-    return jwt.sign({ id }, jwtSecret, {
-      expiresIn: "7d",
-    });
-  };
-
-  static async helloWorld(req, res) {
-    res.status(200).json({ hello: "hello world" });
-  }
-
   static async InsertStudent(req, res) {
     const { nome, email, serie } = req.body;
 
@@ -55,21 +45,6 @@ module.exports = class StudentController {
     }
   }
 
-  // static async deleteStudent(req, res) {
-  //   const id = req.params.id;
-
-  //   try {
-  //     const student = await Student.destroy({ where: { id: id } });
-
-  //     res
-  //       .status(200)
-  //       .json({ message: "Usuário deletado com sucesso: ", student });
-  //   } catch (error) {
-  //     res
-  //       .status(404)
-  //       .json({ errors: ["Houveu um erro, tente novamente mais tarde"] });
-  //   }
-  // }
   static async deleteStudent(req, res) {
     const id = req.params.id;
 

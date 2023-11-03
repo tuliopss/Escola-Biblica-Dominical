@@ -27,7 +27,7 @@ const jwtSecret = process.env.JWT_SECRET;
 
 const authGuard = async (req, res, next) => {
   const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1]; // TOKEN EXAMPLE: Bearer djar3uieo3koddka. Split separa em um array e pega o [1]
+  const token = authHeader && authHeader.split(" ")[1];
 
   //check if a header has a token
   if (!token) {
@@ -38,18 +38,14 @@ const authGuard = async (req, res, next) => {
   //check if token is valid
   try {
     const verified = jwt.verify(token, jwtSecret);
-    // console.log("VERIFIED: ", verified);
     const teacher = await Teacher.findByPk(verified.id);
 
+    // Remove password from the req
     if (teacher) {
-      // Remova a senha do objeto antes de enviar a resposta
       teacher.password = undefined;
       req.teacher = teacher;
       next();
     }
-    // req.user = await Teacher.findOne({ where: { id: verified.id } });
-    // req.teacher = await Teacher.findByPk(verified.id).select("-password");
-    next();
   } catch (error) {
     res.status(401).json({ errors: ["Token inválido."] });
   }

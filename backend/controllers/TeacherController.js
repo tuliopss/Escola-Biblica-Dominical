@@ -2,6 +2,9 @@ const Teacher = require("../models/Teacher");
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 const bcrypt = require("bcrypt");
+const Classroom = require("../models/Classroom");
+const Student = require("../models/Student");
+const StudentController = require("./StudentController");
 
 module.exports = class TeacherController {
   static generateToken = (id) => {

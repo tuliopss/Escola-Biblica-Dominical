@@ -23,5 +23,6 @@ router.post(
   TeacherController.register
 );
 router.post("/login", loginValidation(), validate, TeacherController.login);
+router.post("/createClass", authGuard, TeacherController.createClassroom);
 
 module.exports = router;
