@@ -27,4 +27,12 @@ Teacher // Assumi a entidade Teacher como o usuário principal
 • POST /teacher/login --> método de login e suas validações, e gera seu token de autenticação;
 
 Classroom
+
 • GET /classrooms/ --> retorna todas as turmas registradas no banco;
+
+• GET /classrooms/:id/students --> retorna todos os estudantes de uma turma;
+
+• POST /classrooms/InsertStudent/:id --> insere um estudante em uma turma;
+
+• DELETE /classrooms/deleteStudent/:id --> remove um estudante de uma turma;
+
