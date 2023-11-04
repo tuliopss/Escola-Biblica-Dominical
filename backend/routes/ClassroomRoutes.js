@@ -12,11 +12,11 @@ const {
   loginValidation,
 } = require("../middlewares/teachersValidations");
 
-router.get("/", authGuard, ClassroomController.getAllClasses);
-// router.post(
-//   "/insertStudent/:id",
-//   authGuard,
-//   ClassroomController.insertStudentIntoClass
-// );
+router.get("/classrooms", authGuard, ClassroomController.getAllClasses);
+router.post(
+  "/insertStudent/:id",
+  authGuard,
+  ClassroomController.insertStudentIntoClass
+);
 
 module.exports = router;

@@ -14,13 +14,31 @@ module.exports = class ClassroomController {
     }
   }
 
-  // static async insertStudentIntoClass(req, res) {
-  //   const idClassroom = req.params.id;
-  //   const studentID = req.body.studentID;
-  //   const students = await Student.findAll({ raw: true });
-  //   const insertedStudent = await Student.findByPk(studentID);
+  static async insertStudentIntoClass(req, res) {
+    const idClassroom = req.params.id;
+    const studentID = req.body.studentID;
 
-  //   res.json({ idClass: idClassroom, insertedStudent: insertedStudent });
-  //   //await Classroom.create;
-  // }
+    try {
+      const classroom = await Classroom.findByPk(idClassroom);
+
+      if (!classroom) {
+        res.status(404).json({ errors: ["Turma não encontrada."] });
+        return;
+      }
+
+      const insertedStudent = await Student.findByPk(studentID);
+
+      if (!insertedStudent) {
+        res.status(404).json({ errors: ["Estudante não encontrado."] });
+        return;
+      }
+      await classroom.addAlunos(insertedStudent);
+
+      res.status(200).json({ message: "Aluno inserido com sucesso" });
+    } catch (error) {
+      res
+        .status(404)
+        .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
+    }
+  }
 };
