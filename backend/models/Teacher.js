@@ -20,7 +20,7 @@ const Teacher = db.define("professor", {
       "GEOGRAFIA",
       "PORTUGUES",
       "MATEMATICA",
-      "Ciencias",
+      "CIENCIAS",
     ]),
     require: true,
   },

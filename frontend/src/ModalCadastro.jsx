@@ -1,57 +1,124 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import "./Modal.css";
-
-
-
+import { Context } from "./context/UserContext";
 
 export default function ModalCadastro() {
   const [modal, setModal] = useState(false);
+  const [user, setUser] = useState({});
+  const [nome, setNome] = useState("");
+  const { register } = useContext(Context);
+  const disciplinas = [
+    "HISTORIA",
+    "MATEMATICA",
+    "PORTUGUES",
+    "GEOGRAFIA",
+    "CIENCIAS",
+  ];
+
+  // const handleChange = (e) => {
+  //   setUser({ ...user, [e.target.name]: e.target.value });
+  //   // console.log(nome);
+  // };
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleSubject = (e) => {
+    setUser({
+      ...user,
+      disciplina: e.target.options[e.target.selectedIndex].text,
+    });
+    console.log(user.disciplina);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    register(user);
+  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   //enviar user p banco
+  //   console.log(user);
+  // };
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  if(modal) {
-    document.body.classList.add('active-modal')
+  if (modal) {
+    document.body.classList.add("active-modal");
   } else {
-    document.body.classList.remove('active-modal')
+    document.body.classList.remove("active-modal");
   }
 
   return (
     <>
-      <button onClick={toggleModal} className="btn-modal">
+      <button onClick={toggleModal} className='btn-modal'>
         Cadastro
       </button>
 
       {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
-            
-           
+        <div className='modal'>
+          <div onClick={toggleModal} className='overlay'></div>
+          <div className='modal-content'>
+            <form onSubmit={handleSubmit} id='form' method='post'>
+              <div className='box' id='divForm'>
+                <h3 className='text-login'>Cadastrar</h3>
 
+                <input
+                  className='input'
+                  type='text'
+                  name='nome'
+                  placeholder='Nome'
+                  // value={nome}
+                  onChange={handleChange}
+                />
 
-		<form id="form" method="post">
-            <div className="box" id="divForm">
-                <h3 className="text-login">Cadastrar</h3>
-		
-                <input className="input" name="email" type="email" placeholder="Email" id="email"/><br/>
-                <input className="input" name="username" type="password" placeholder="Senha" id="pw"/><br/>
-                <button className="btn-send" >Cadastrar</button>
-              
-            </div>
-        </form>
-        
+                <input
+                  className='input'
+                  name='email'
+                  type='email'
+                  placeholder='Email'
+                  id='email'
+                  onChange={handleChange}
+                />
+                <br />
+                <input
+                  className='input'
+                  name='password'
+                  type='password'
+                  placeholder='Senha'
+                  id='pw'
+                  onChange={handleChange}
+                />
+                <input
+                  className='input'
+                  name='confirmPassword'
+                  type='password'
+                  placeholder='Confirme sua senha'
+                  onChange={handleChange}
+                />
+                {/* <label>Selecione uma disciplina:</label> */}
+                <select
+                  className='input'
+                  onChange={handleSubject}
+                  name='disciplina'>
+                  {disciplinas.map((disciplina) => (
+                    <option value={disciplina}>{disciplina}</option>
+                  ))}
+                </select>
+                <br />
+                <button className='btn-send'>Cadastrar</button>
+              </div>
+            </form>
 
-            <button className="close-modal" onClick={toggleModal}>
-              
-		✖
+            <button className='close-modal' onClick={toggleModal}>
+              ✖
             </button>
           </div>
         </div>
       )}
-      
     </>
   );
-  
 }

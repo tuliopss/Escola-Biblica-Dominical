@@ -8,7 +8,6 @@ const studentsRoutes = require("./routes/StudentRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const classroomRoutes = require("./routes/ClassroomRoutes");
 const app = express();
-const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,6 +25,6 @@ app.use("/classroom", classroomRoutes);
 conn
   .sync()
   .then(() => {
-    app.listen(3000);
+    app.listen(5000);
   })
   .catch((error) => console.log(error));
