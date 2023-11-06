@@ -26,6 +26,6 @@ app.use("/classroom", classroomRoutes);
 conn
   .sync()
   .then(() => {
-    app.listen(3000);
+    app.listen(5000);
   })
   .catch((error) => console.log(error));
