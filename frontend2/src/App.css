@@ -238,6 +238,10 @@ nav li a {
 nav li a:hover {
   font-weight: bold;
 }
+nav li:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
 
 .mobile-menu-exit {
   display: block;

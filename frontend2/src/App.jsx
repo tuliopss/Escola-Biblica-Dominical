@@ -8,6 +8,9 @@ import Navbar from "./components/layouts/Navbar";
 import { Router, Route, BrowserRouter, Routes } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import Message from "./components/layouts/Message";
+import Notas from "./components/Notas";
+import Turmas from "./components/turmas";
+import Atividades from "./components/Atividades";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -20,9 +23,9 @@ function App() {
           <Message />
           <Navbar />
           <Routes>
-            <Route path='/notas' />
-            <Route path='/d' />
-            <Route path='/a' />
+            <Route path='/notas' element={<Notas />} />
+            <Route path='/d' element={<Turmas />} />
+            <Route path='/a' element={<Atividades />} />
           </Routes>
         </UserProvider>
       </BrowserRouter>

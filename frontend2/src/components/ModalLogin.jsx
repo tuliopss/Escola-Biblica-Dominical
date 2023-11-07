@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Modal.css";
 import { Link } from "react-router-dom";
+import { Context } from "../context/UserContext";
 
 export default function ModalLogin() {
   const [modal, setModal] = useState(false);
+  const [user, setUser] = useState({});
+  const { login } = useContext(Context);
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    login(user);
+  };
 
   const toggleModal = () => {
     setModal(!modal);
@@ -25,7 +38,7 @@ export default function ModalLogin() {
         <div className='modal'>
           <div onClick={toggleModal} className='overlay'></div>
           <div className='modal-content'>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className='box'>
                 <h3 className='text-login'>Login</h3>
                 <input
@@ -33,13 +46,15 @@ export default function ModalLogin() {
                   name='email'
                   type='email'
                   placeholder='Email'
+                  onChange={handleChange}
                 />
                 <br />
                 <input
                   className='input'
-                  name='username'
+                  name='password'
                   type='password'
                   placeholder='Senha'
+                  onChange={handleChange}
                 />
                 <br />
                 <button className='btn-send'>Entrar</button>
