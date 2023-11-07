@@ -14,8 +14,6 @@ const {
 
 router.get("/profile", authGuard, TeacherController.getCurrentUser);
 
-router.get("/", authGuard, (req, res) => res.send("oi teacher"));
-
 router.post(
   "/register",
   teacherCreateValidations(),
