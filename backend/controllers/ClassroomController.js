@@ -38,6 +38,7 @@ module.exports = class ClassroomController {
         .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
     }
   }
+
   static async createClassroom(req, res) {
     const { disciplina, teacherID } = req.body;
 
