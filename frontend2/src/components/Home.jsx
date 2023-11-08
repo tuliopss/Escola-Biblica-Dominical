@@ -6,8 +6,8 @@ const Home = () => {
       <section className='hero'>
         <div className='container'>
           <div className='left-col'>
-            <p className='sub-head'>Olá tudo bem?</p>
-            <h1>Faça seu cadastro e aproveite !</h1>
+            <p className='sub-head'>Seja bem vindo</p>
+            <h1>Faça sua inscrição na Escola Bíblica Dominical</h1>
 
             <div className='hero-cta'>
               <button href='#' className='custom-btn btn-15'>

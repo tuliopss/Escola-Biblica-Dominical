@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap");
 /* --- MAIN STYLE ---*/
 :root {
-  --primary-color: rgb(6, 70, 189);
+  --primary-color: #133ba7;
+  ;
 }
 
 body {
@@ -27,12 +28,13 @@ section {
 /* --- NAVIGATION STYLE ---*/
 .nav-bar {
   padding: 1em;
+  text-align: center;
 }
 
 .nav-bar .logo-nav {
   text-decoration: none;
   font-weight: bold;
-  color: #000;
+  color: var(--primary-color);
   font-size: 1.2em;
 }
 
@@ -59,6 +61,7 @@ section {
 
 /* --- HERO STYLE ---*/
 .hero {
+  height: 26em;
   text-align: center;
 }
 
@@ -71,22 +74,11 @@ section {
 }
 
 .left-col h1 {
-  text-transform: capitalize;
+  text-transform: none;
   font-size: 2.5em;
   font-weight: bolder;
   margin-top: 0.1em;
   line-height: 1.3em;
-}
-
-.primery-cta {
-  background-color: var(--primary-color);
-  color: #fff;
-  text-decoration: none;
-  padding: 0.6em 1.3em;
-  font-size: 1.4em;
-  border-radius: 5em;
-  font-weight: bold;
-  display: inline-block;
 }
 
 .watch-video-cta {
@@ -109,8 +101,10 @@ section {
 
 /* --- FEATURES STYLE ---*/
 .features-section {
+  width: 100%;
   background: #20272e;
   color: #fff;
+  border-radius: 15px;
 }
 
 .features-section ul {
@@ -223,6 +217,7 @@ nav {
 }
 
 nav ul.primary-nav {
+  align-items: center;
   margin-top: 4em;
 }
 
@@ -328,7 +323,7 @@ nav li:hover {
 
   .btn-15 {
     font-weight: bold;
-    background: #4221fe;
+    background: #133ba7;
     border: none;
     z-index: 1;
   }
@@ -340,7 +335,7 @@ nav li:hover {
     top: 0;
     right: 0;
     z-index: -1;
-    background-color: rgb(29, 51, 151);
+    background-color: rgb(3, 49, 255);
     border-radius: 5px;
      box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
      7px 7px 20px 0px rgba(0,0,0,.1),
@@ -398,10 +393,9 @@ nav li:hover {
   }
   .features-section ul {
     display: block;
-    margin-left: 5em;
   }
   .features-section ul li {
-    font-size: 1.4em;
+    font-size: 1.7em;
   }
   .features-section ul li::before {
     margin-top: -0.1em;
@@ -450,21 +444,11 @@ nav li:hover {
 
 /* --- 1450px STYLE ---*/
 @media only screen and (min-width: 1450px) {
-  .features-section::before {
-    content: "";
-    position: absolute;
-    width: 10%;
-    height: 20em;
-    background: var(--primary-color);
-    left: 0;
-    top: -4em;
-  }
   .features-section::after {
     content: "";
     position: absolute;
     width: 200px;
     height: 20em;
-
     left: 4.5;
     top: 2em;
   }
@@ -483,7 +467,7 @@ nav li:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #eee; */
-  /* color: #444; */
-  border-top: 1px solid #665;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-top: 1px solid rgb(122, 140, 199)
 }
