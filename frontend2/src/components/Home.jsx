@@ -10,7 +10,7 @@ const Home = () => {
             <h1>Faça seu cadastro e aproveite !</h1>
 
             <div className='hero-cta'>
-              <button href='#' className='primery-cta'>
+              <button href='#' className='custom-btn btn-15'>
                 Comece já
               </button>
             </div>
