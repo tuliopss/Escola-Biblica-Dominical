@@ -8,6 +8,7 @@ const ClassroomController = require("../controllers/ClassroomController");
 const validate = require("../middlewares/handleValidation");
 
 router.get("/", authGuard, ClassroomController.getAllClasses);
+router.get("/:id", authGuard, ClassroomController.getClassroomById);
 router.get(
   "/:id/students",
   authGuard,
@@ -19,6 +20,11 @@ router.post(
   "/insertStudent/:id",
   authGuard,
   ClassroomController.insertStudentIntoClass
+);
+router.post(
+  "/insertTeacher/:id",
+  authGuard,
+  ClassroomController.insertTeacherIntoClass
 );
 router.delete(
   "/deleteStudent/:id",

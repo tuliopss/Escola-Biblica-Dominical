@@ -9,19 +9,19 @@ const Navbar = () => {
   return (
     <div className='nav-bar'>
       <div className='container'>
-        <a className='logo-nav' to=''>
+        <Link className='logo-nav' to='/'>
           Escola Bíblica Dominical
-        </a>
+        </Link>
         <nav>
           <ul className='primary-nav'>
             <li className='current'>
               <Link to='/notas'>Notas</Link>
             </li>
             <li>
-              <Link to='/d'>Disciplinas</Link>
+              <Link to='/turmas'>Disciplinas</Link>
             </li>
             <li>
-              <Link to='/a'>Atividades</Link>
+              <Link to='/'>Atividades</Link>
             </li>
             <li>
               <ModalCadastro />

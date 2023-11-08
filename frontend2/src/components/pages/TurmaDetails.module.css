@@ -1,0 +1,9 @@
+.turma_details_container {
+  text-align: center;
+}
+.turma_details_container p {
+  margin-bottom: 1em;
+}
+.turma_details_container header {
+  margin-bottom: 2em;
+}
