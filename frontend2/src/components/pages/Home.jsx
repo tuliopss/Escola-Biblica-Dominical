@@ -1,8 +1,10 @@
 import React from "react";
+import Overview from "../Overview";
 
 const Home = () => {
   return (
     <>
+      <Overview />
       <section className='hero'>
         <div className='container'>
           <div className='left-col'>

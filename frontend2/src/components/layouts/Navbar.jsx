@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import ModalCadastro from "../ModalCadastro";
 import ModalLogin from "../ModalLogin";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Context } from "../../context/UserContext";
 // import { Link } from "react-router-dom";
 const Navbar = () => {
+  const location = useLocation();
   const { authenticated, logout } = useContext(Context);
   return (
     <div className='nav-bar'>
@@ -14,14 +15,15 @@ const Navbar = () => {
         </Link>
         <nav>
           <ul className='primary-nav'>
-            <li className='current'>
+            <li className={location.pathname === "/notas" ? "current" : ""}>
               <Link to='/notas'>Notas</Link>
             </li>
-            <li>
+            <li className={location.pathname === "/turmas" ? "current" : ""}>
               <Link to='/turmas'>Disciplinas</Link>
             </li>
-            <li>
-              <Link to='/'>Atividades</Link>
+            <li
+              className={location.pathname === "/atividades" ? "current" : ""}>
+              <Link to='/atividades'>Atividades</Link>
             </li>
             <li>
               <ModalCadastro />

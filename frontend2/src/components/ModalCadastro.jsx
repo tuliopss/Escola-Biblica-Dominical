@@ -8,13 +8,7 @@ export default function ModalCadastro() {
   const [user, setUser] = useState({});
   const [nome, setNome] = useState("");
   const { register } = useContext(Context);
-  const disciplinas = [
-    "HISTORIA",
-    "MATEMATICA",
-    "PORTUGUES",
-    "GEOGRAFIA",
-    "CIENCIAS",
-  ];
+  const disciplinas = ["Etica", "Teologia", "Evangelho", "Criacao", "Historia"];
 
   // const handleChange = (e) => {
   //   setUser({ ...user, [e.target.name]: e.target.value });

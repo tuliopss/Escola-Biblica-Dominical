@@ -2,7 +2,6 @@
 /* --- MAIN STYLE ---*/
 :root {
   --primary-color: #133ba7;
-  ;
 }
 
 body {
@@ -22,7 +21,7 @@ ul {
 }
 
 section {
-  padding: 5em 2em;
+  padding: 3em 2em;
 }
 
 /* --- NAVIGATION STYLE ---*/
@@ -163,7 +162,7 @@ section {
 
 /* --- CONTACT STYLE ---*/
 
-.contact-left{
+.contact-left {
   border: 1px solid #d3d3d3;
   padding: 40px;
   border-radius: 15px;
@@ -317,7 +316,7 @@ nav li:hover {
     color: #fff;
     border-radius: 5px;
     padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 500;
     font-size: 18px;
     background: transparent;
@@ -325,9 +324,9 @@ nav li:hover {
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(201, 185, 185, 0.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(201, 185, 185, 0.1),
+      4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     outline: none;
   }
 
@@ -347,9 +346,8 @@ nav li:hover {
     z-index: -1;
     background-color: rgb(3, 49, 255);
     border-radius: 5px;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
   .btn-15:hover {
@@ -479,5 +477,5 @@ nav li:hover {
   justify-content: center;
   background-color: var(--primary-color);
   color: #ffffff;
-  border-top: 1px solid rgb(122, 140, 199)
+  border-top: 1px solid rgb(122, 140, 199);
 }

@@ -17,9 +17,9 @@ router.get(
 router.post("/createClassroom", authGuard, ClassroomController.createClassroom);
 
 router.post(
-  "/insertStudent/:id",
+  "/insertStudents",
   authGuard,
-  ClassroomController.insertStudentIntoClass
+  ClassroomController.insertStudentIntoClassByCategory
 );
 router.post(
   "/insertTeacher/:id",

@@ -18,11 +18,16 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  background-color: #133ba7;
 }
 
 .turma_card h3 {
-  color: #000;
+  color: #f1f1f1;
   margin-bottom: 1em;
   font-size: 1.6em;
   padding: 8px;
+}
+
+a {
+  color: #000;
 }
