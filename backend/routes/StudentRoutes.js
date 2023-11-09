@@ -11,7 +11,7 @@ router.get("/", StudentController.getAllStudents);
 router.get("/:id", authGuard, StudentController.getStudentById);
 
 router.post(
-  "/",
+  "/create",
   studentsInsertValidations(),
   validate,
   StudentController.InsertStudent

@@ -5,8 +5,26 @@ const Classroom = require("../models/Classroom");
 const jwtSecret = process.env.JWT_SECRET;
 
 module.exports = class StudentController {
+  static checkCategory(idade) {
+    let category = "";
+
+    if (idade >= 2 && idade <= 8) {
+      category = "Principiantes";
+    } else if (idade >= 9 && idade <= 12) {
+      category = "Juniores";
+    } else if (idade >= 13 && idade <= 17) {
+      category = "Adolescentes";
+    } else if (idade >= 18 && idade <= 35) {
+      category = "Jovens";
+    } else if (idade > 35) {
+      category = "Adultos";
+    }
+
+    return category;
+  }
+
   static async InsertStudent(req, res) {
-    const { nome, email, serie } = req.body;
+    const { nome, email, idade } = req.body;
 
     const checkEmail = await Student.findOne({ where: { email: email } });
 
@@ -17,14 +35,14 @@ module.exports = class StudentController {
     const student = {
       nome,
       email,
-      serie,
+      idade,
+      categoria: StudentController.checkCategory(idade),
       presenca: false,
       //false para aluno faltou. ja começa como falta. o banco salva false como 0, e true como 1
     };
 
     try {
       const studentCreated = await Student.create(student);
-      // const token = StudentController.generateToken(studentCreated.id);
       res.status(201).json(studentCreated);
     } catch (error) {
       res
@@ -82,7 +100,7 @@ module.exports = class StudentController {
 
   static async updateStudent(req, res) {
     const id = req.params.id;
-    const { nome, serie } = req.body;
+    const { nome, idade } = req.body;
 
     const student = await Student.findByPk(id);
 
@@ -91,7 +109,11 @@ module.exports = class StudentController {
       return;
     }
 
-    const updatedStudent = { nome, serie };
+    const updatedStudent = {
+      nome,
+      idade,
+      categoria: StudentController.checkCategory(idade),
+    };
 
     try {
       await Student.update(updatedStudent, { where: { id: id } });

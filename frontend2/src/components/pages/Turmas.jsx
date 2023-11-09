@@ -24,6 +24,7 @@ const Turmas = () => {
             <div key={turma.id} className={styles.turma_card}>
               <h3>Turma {turma.id}</h3>
               <p>Disciplina: {turma.disciplina}</p>
+              <p>Categoria: {turma.categoria}</p>
               <p>
                 Professor:{" "}
                 {turma.professor ? turma.professor.nome : "Não atribuído"}

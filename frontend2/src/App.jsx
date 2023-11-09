@@ -12,9 +12,10 @@ import Notas from "./components/Notas";
 import Turmas from "./components/pages/Turmas";
 import Atividades from "./components/Atividades";
 import Footer from "./components/layouts/Footer";
-import Home from "./components/Home";
+import Home from "./components/pages/Home";
 import Container from "./components/layouts/Container";
 import TurmaDetails from "./components/pages/TurmaDetails";
+import Overview from "./components/Overview";
 function App() {
   return (
     <>
@@ -23,12 +24,13 @@ function App() {
           <Message />
           <Container>
             <Navbar />
+
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/notas' element={<Notas />} />
               <Route path='/turmas' element={<Turmas />} />
               <Route path='/turmas/:id' element={<TurmaDetails />} />
-              <Route path='/a' element={<Atividades />} />
+              <Route path='/atividades' element={<Atividades />} />
             </Routes>
           </Container>
           <Footer />
