@@ -75,4 +75,16 @@ module.exports = class TeacherController {
 
     res.status(200).json(user);
   }
+
+  static async getAllTeachers(req, res) {
+    try {
+      const teachers = await Teacher.findAll();
+
+      res.status(200).json(teachers);
+    } catch (error) {
+      res
+        .status(400)
+        .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
+    }
+  }
 };

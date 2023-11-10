@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Overview.module.css";
 import api from "../utils/api";
+import { Link } from "react-router-dom";
 const Overview = () => {
   const [turmas, setTurmas] = useState([]);
   const [alunos, setAlunos] = useState([]);
@@ -11,22 +12,35 @@ const Overview = () => {
       setTurmas(response.data);
     });
   }, []);
+
   useEffect(() => {
     api.get("/student").then((response) => {
       setAlunos(response.data);
     });
   }, []);
 
+  useEffect(() => {
+    api.get("/teacher").then((response) => {
+      setTeachers(response.data);
+    });
+  }, []);
+
   return (
     <div className={styles.overview}>
       <div className={styles.students_card}>
-        <span>{alunos.length}</span> <p>ALUNOS</p>
+        <Link to='/alunos/dashborad'>
+          <span>{alunos.length}</span> <p>ALUNOS</p>
+        </Link>
       </div>
       <div className={styles.teachers_card}>
-        <span>3</span> <p>PROFESSORES</p>
+        <Link>
+          <span>{teachers.length}</span> <p>PROFESSORES</p>
+        </Link>
       </div>
       <div className={styles.classes_card}>
-        <span>{turmas.length}</span> <p>TURMAS</p>
+        <Link to='/turmas'>
+          <span>{turmas.length}</span> <p>TURMAS</p>
+        </Link>
       </div>
     </div>
   );
