@@ -22,6 +22,7 @@ ul {
 
 section {
   padding: 3em 2em;
+  /* background-color: red; */
 }
 
 /* --- NAVIGATION STYLE ---*/
@@ -293,7 +294,6 @@ nav li:hover {
   .nav-bar ul.primary-nav {
     margin: 0;
     margin-left: 40%;
-    
   }
   .nav-bar li.current a {
     font-weight: bold;
@@ -368,9 +368,9 @@ nav li:hover {
     width: 1050px;
     margin: 0 auto;
   }
-  section {
+  /* section {
     padding: 10em 4em;
-  }
+  } */
   .hero .container {
     display: -webkit-box;
     display: -ms-flexbox;

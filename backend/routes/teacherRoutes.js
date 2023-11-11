@@ -13,7 +13,8 @@ const {
 } = require("../middlewares/teachersValidations");
 
 router.get("/", authGuard, TeacherController.getAllTeachers);
-router.get("/profile", authGuard, TeacherController.getCurrentUser);
+router.get("/bySubject", TeacherController.getTeachersBySubject);
+// router.get("/profile", authGuard, TeacherController.getCurrentUser);
 
 router.post(
   "/register",

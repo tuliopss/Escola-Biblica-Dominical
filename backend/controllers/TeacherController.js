@@ -87,4 +87,21 @@ module.exports = class TeacherController {
         .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
     }
   }
+
+  static async getTeachersBySubject(req, res) {
+    const disciplina = req.query.disciplina;
+    try {
+      const teachers = await Teacher.findAll({
+        where: {
+          disciplina: disciplina,
+        },
+      });
+
+      res.status(200).json(teachers);
+    } catch (error) {
+      res
+        .status(400)
+        .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
+    }
+  }
 };

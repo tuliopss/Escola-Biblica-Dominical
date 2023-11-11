@@ -16,6 +16,7 @@ import Home from "./components/pages/Home";
 import Container from "./components/layouts/Container";
 import TurmaDetails from "./components/pages/TurmaDetails";
 import Overview from "./components/Overview";
+import AddTurma from "./components/pages/AddTurma";
 function App() {
   return (
     <>
@@ -24,13 +25,13 @@ function App() {
           <Message />
           <Container>
             <Navbar />
-
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/notas' element={<Notas />} />
               <Route path='/turmas' element={<Turmas />} />
               <Route path='/turmas/:id' element={<TurmaDetails />} />
               <Route path='/atividades' element={<Atividades />} />
+              <Route path='/addTurma' element={<AddTurma />} />
             </Routes>
           </Container>
           <Footer />

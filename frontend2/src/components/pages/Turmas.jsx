@@ -16,6 +16,9 @@ const Turmas = () => {
     <section>
       <div className={styles.turmas_header}>
         <h1>Veja as turmas cadastradas:</h1>
+        <Link to='/addTurma'>
+          <button className={styles.btn_add_turma}>Criar nova turma</button>
+        </Link>
       </div>
 
       <div className={styles.turma_container}>
