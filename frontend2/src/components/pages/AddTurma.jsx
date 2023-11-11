@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 
-// import FormStyles from "./Form.module.css";
+import styles from "./AddTurma.module.css";
 
 const AddTurma = () => {
   const [turma, setTurma] = useState({});
@@ -40,42 +40,48 @@ const AddTurma = () => {
 
   //className={FormStyles.form_container}
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='disciplina'>Nome da disciplina</label>
-      <select className='input' onChange={handleChange} name='disciplina'>
-        <option disabled selected>
-          Selecione a disciplina
-        </option>
-        {disciplinas.map((disciplina) => (
-          <option value={disciplina} key={disciplina}>
-            {disciplina}
+    <form className={styles.form_addTurma} onSubmit={handleSubmit}>
+      <div className={styles.form_field}>
+        <label htmlFor='disciplina'>Nome da disciplina</label>
+        <select className='input' onChange={handleChange} name='disciplina'>
+          <option disabled selected>
+            Selecione a disciplina
           </option>
-        ))}
-      </select>
+          {disciplinas.map((disciplina) => (
+            <option value={disciplina} key={disciplina}>
+              {disciplina}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <label htmlFor='categoria'>Categoria da turma</label>
-      <select className='input' onChange={handleChange} name='categoria'>
-        <option disabled selected>
-          Selecione a categoria
-        </option>
-        {categorias.map((categoria) => (
-          <option value={categoria} key={categoria}>
-            {categoria}
+      <div className={styles.form_field}>
+        <label htmlFor='categoria'>Categoria da turma</label>
+        <select className='input' onChange={handleChange} name='categoria'>
+          <option disabled selected>
+            Selecione a categoria
           </option>
-        ))}
-      </select>
+          {categorias.map((categoria) => (
+            <option value={categoria} key={categoria}>
+              {categoria}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <label htmlFor='professor'>Insira um professor para essa turma</label>
-      <select className='input' onChange={handleChange} name='teacherID'>
-        <option disabled selected>
-          Selecione
-        </option>
-        {professores.map((prof) => (
-          <option value={prof.id} key={prof.id}>
-            {prof.nome} - {prof.email}
+      <div className={styles.form_field}>
+        <label htmlFor='professor'>Insira um professor para essa turma</label>
+        <select className='input' onChange={handleChange} name='teacherID'>
+          <option disabled selected>
+            Selecione
           </option>
-        ))}
-      </select>
+          {professores.map((prof) => (
+            <option value={prof.id} key={prof.id}>
+              {prof.nome} - {prof.email}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {/* <select
         name='color'
@@ -84,7 +90,7 @@ const AddTurma = () => {
         // onChange={handleSubject}
         // value={pet.color || ""}
       /> */}
-      <input type='submit' />
+      <input className={styles.btn_submit_form} type='submit' />
     </form>
   );
 };
