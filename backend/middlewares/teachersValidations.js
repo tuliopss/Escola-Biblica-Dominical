@@ -26,6 +26,7 @@ const teacherCreateValidations = () => {
         }
         return true;
       }),
+    body("disciplina").isString().withMessage("A disciplina é obrigatória"),
   ];
 };
 

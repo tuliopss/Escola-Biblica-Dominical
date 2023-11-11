@@ -5,6 +5,9 @@ const authGuard = require("../middlewares/authGuard");
 
 const ClassroomController = require("../controllers/ClassroomController");
 
+const {
+  classroomCreateValidations,
+} = require("../middlewares/classroomValidations");
 const validate = require("../middlewares/handleValidation");
 
 router.get("/", authGuard, ClassroomController.getAllClasses);
@@ -14,7 +17,13 @@ router.get(
   authGuard,
   ClassroomController.getStudentsFromClass
 );
-router.post("/createClassroom", authGuard, ClassroomController.createClassroom);
+router.post(
+  "/createClassroom",
+  authGuard,
+  classroomCreateValidations(),
+  validate,
+  ClassroomController.createClassroom
+);
 
 router.post(
   "/insertStudents",

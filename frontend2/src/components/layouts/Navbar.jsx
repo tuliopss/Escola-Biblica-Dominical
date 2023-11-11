@@ -11,6 +11,12 @@ const Navbar = () => {
     <div className='nav-bar'>
       <div className='container'>
         <Link className='logo-nav' to='/'>
+          <img
+            src='../../../public/EBDlogo.jpg'
+            className='img_logo'
+            alt=''
+            srcset=''
+          />
           Escola Bíblica Dominical
         </Link>
         <nav>
@@ -19,7 +25,7 @@ const Navbar = () => {
               <Link to='/notas'>Notas</Link>
             </li>
             <li className={location.pathname === "/turmas" ? "current" : ""}>
-              <Link to='/turmas'>Disciplinas</Link>
+              <Link to='/turmas'>Turmas</Link>
             </li>
             <li
               className={location.pathname === "/atividades" ? "current" : ""}>

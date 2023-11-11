@@ -3,11 +3,13 @@ import api from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./AddTurma.module.css";
+import useFlashMessage from "../../hooks/useFlashMessage";
 
 const AddTurma = () => {
   const [turma, setTurma] = useState({});
   const [disciplina, setDisciplina] = useState();
   const [professores, setProfessores] = useState([]);
+  const { setFlashMessage } = useFlashMessage();
   const navigate = useNavigate();
 
   const disciplinas = ["Etica", "Teologia", "Evangelho", "Criacao", "Historia"];
@@ -27,6 +29,24 @@ const AddTurma = () => {
       });
   }, [turma]);
 
+  const addTurma = async (turma) => {
+    let msgType = "success";
+    let msgText = "Turma criada com sucesso.";
+
+    try {
+      await api.post("/classroom/createClassroom", turma).then((response) => {
+        return response.data;
+      });
+      setFlashMessage(msgText, msgType);
+      navigate("/turmas");
+    } catch (error) {
+      msgType = "error";
+      msgText = error.response.data.errors[0];
+
+      setFlashMessage(msgText, msgType);
+    }
+  };
+
   const handleChange = (e) => {
     setTurma({ ...turma, [e.target.name]: e.target.value });
     console.log(turma);
@@ -34,8 +54,7 @@ const AddTurma = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api.post("/classroom/createClassroom", turma);
-    navigate("/turmas");
+    addTurma(turma);
   };
 
   //className={FormStyles.form_container}
@@ -82,14 +101,6 @@ const AddTurma = () => {
           ))}
         </select>
       </div>
-
-      {/* <select
-        name='color'
-        text='Selecione a cor'
-        options={disciplinas}
-        // onChange={handleSubject}
-        // value={pet.color || ""}
-      /> */}
       <input className={styles.btn_submit_form} type='submit' />
     </form>
   );
