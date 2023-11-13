@@ -1,0 +1,87 @@
+.profile_header {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form_container {
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.form_container input {
+  font-size: 1em;
+}
+
+.form_container input[type="submit"] {
+  border-radius: 8px;
+  background-color: #254bb4;
+  color: #fff;
+  border: none;
+  min-width: 100px;
+  min-height: 2.5em;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.form_container input[type="submit"]:hover {
+  background-color: #1c8a42;
+}
+
+.form_container p {
+  margin-top: 1em;
+}
+.form_container p a {
+  color: #16479d;
+  font-weight: bold;
+}
+.form_container p a:hover {
+  color: #0d3477;
+  font-weight: bold;
+}
+
+.form_container select {
+  font-weight: bold;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.form_container select option {
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.form_field {
+  margin-bottom: 20px;
+}
+
+.form_field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.profile_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+
+  margin: auto;
+  margin-bottom: 2em;
+
+  border: 1px solid #000;
+}

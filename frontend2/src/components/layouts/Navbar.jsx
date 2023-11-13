@@ -31,6 +31,9 @@ const Navbar = () => {
               className={location.pathname === "/atividades" ? "current" : ""}>
               <Link to='/atividades'>Atividades</Link>
             </li>
+            <li className={location.pathname === "/profile" ? "current" : ""}>
+              <Link to='/profile'>Meu perfil</Link>
+            </li>
             <li>
               <ModalCadastro />
             </li>
