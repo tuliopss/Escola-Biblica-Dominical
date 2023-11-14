@@ -70,6 +70,37 @@ module.exports = class TeacherController {
     });
   }
 
+  static async updateTeacher(req, res) {
+    const reqTeacher = req.teacher;
+    const { nome, disciplina, password, confirmPassword } = req.body;
+
+    const teacher = await Teacher.findByPk(reqTeacher.id, {
+      attributes: { exclude: ["password"] },
+    });
+
+    if (nome) {
+      teacher.nome = nome;
+    }
+
+    if (disciplina) {
+      teacher.disciplina = disciplina;
+    }
+
+    if (password !== confirmPassword) {
+      res.status(422).json({ errors: ["Senhas não coincidentes!"] });
+      return;
+    } else if (password === confirmPassword && password != null) {
+      const salt = await bcrypt.genSalt(12);
+      const passwordHash = await bcrypt.hash(password, salt);
+
+      teacher.password = passwordHash;
+    }
+
+    await teacher.save();
+
+    res.status(200).json(teacher);
+  }
+
   static async getCurrentUser(req, res) {
     const user = req.teacher;
 
@@ -98,6 +129,22 @@ module.exports = class TeacherController {
       });
 
       res.status(200).json(teachers);
+    } catch (error) {
+      res
+        .status(400)
+        .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
+    }
+  }
+
+  static async getTeacherClasses(req, res) {
+    const teacherId = req.params.id;
+
+    try {
+      const classrooms = await Classroom.findAll({
+        where: { professorId: teacherId },
+      });
+
+      res.status(200).json(classrooms);
     } catch (error) {
       res
         .status(400)
