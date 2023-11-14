@@ -34,6 +34,7 @@ export default function ModalCadastro() {
 
   const toggleModal = () => {
     setModal(!modal);
+    
   };
 
   if (modal) {
@@ -49,68 +50,71 @@ export default function ModalCadastro() {
       </Link>
 
       {modal && (
-        <div className='modal'>
-          <div onClick={toggleModal} className='overlay'></div>
-          <div className='modal-content'>
-            <form onSubmit={handleSubmit} id='form' method='post'>
-              <div className='box' id='divForm'>
-                <h3 className='text-login'>Cadastrar</h3>
+        <div id="wrapper">
+          <div className='modal'>
+            <div onClick={toggleModal} className='overlay'></div>
+            
+            <div className='modal-content'>
+              <form onSubmit={handleSubmit} id='form' method='post'>
+                <div className='box' id='divForm'>
+                  <h3 className='text-login'>Cadastrar</h3>
 
-                <input
-                  className='input'
-                  type='text'
-                  name='nome'
-                  placeholder='Nome'
-                  // value={nome}
-                  onChange={handleChange}
-                />
+                  <input
+                    className='input'
+                    type='text'
+                    name='nome'
+                    placeholder='Nome'
+                    // value={nome}
+                    onChange={handleChange}
+                  />
 
-                <input
-                  className='input'
-                  name='email'
-                  type='email'
-                  placeholder='Email'
-                  id='email'
-                  onChange={handleChange}
-                />
-                <br />
-                <input
-                  className='input'
-                  name='password'
-                  type='password'
-                  placeholder='Senha'
-                  id='pw'
-                  onChange={handleChange}
-                />
-                <input
-                  className='input'
-                  name='confirmPassword'
-                  type='password'
-                  placeholder='Confirme sua senha'
-                  onChange={handleChange}
-                />
-                {/* <label>Selecione uma disciplina:</label> */}
-                <select
-                  className='input'
-                  onChange={handleSubject}
-                  name='disciplina'>
-                  <option disabled selected>
-                    Selecione
-                  </option>
-                  {disciplinas.map((disciplina) => (
-                    <option value={disciplina} key={disciplina}>
-                      {disciplina}
+                  <input
+                    className='input'
+                    name='email'
+                    type='email'
+                    placeholder='Email'
+                    id='email'
+                    onChange={handleChange}
+                  />
+                  <br />
+                  <input
+                    className='input'
+                    name='password'
+                    type='password'
+                    placeholder='Senha'
+                    id='pw'
+                    onChange={handleChange}
+                  />
+                  <input
+                    className='input'
+                    name='confirmPassword'
+                    type='password'
+                    placeholder='Confirme sua senha'
+                    onChange={handleChange}
+                  />
+                  {/* <label>Selecione uma disciplina:</label> */}
+                  <select
+                    className='input'
+                    onChange={handleSubject}
+                    name='disciplina'>
+                    <option disabled selected>
+                      Selecione
                     </option>
-                  ))}
-                </select>
-                <br />
-                <button className='btn-send'>Cadastrar</button>
-              </div>
-            </form>
+                    {disciplinas.map((disciplina) => (
+                      <option value={disciplina} key={disciplina}>
+                        {disciplina}
+                      </option>
+                    ))}
+                  </select>
+                  <br />
+                  <button className='btn-send'>Cadastrar</button>
+                </div>
+              </form>
 
-            <button className='close-modal' onClick={toggleModal}>
-              ✖
-            </button>
+              <button className='close-modal' onClick={toggleModal}>
+                ✖
+              </button>
+            </div>
           </div>
         </div>
       )}

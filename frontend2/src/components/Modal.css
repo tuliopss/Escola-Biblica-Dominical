@@ -1,4 +1,5 @@
-body.active-modal {
+body.active-modal,
+html.active-modal {
   overflow-y: hidden;
 }
 
@@ -87,19 +88,57 @@ body.active-modal {
 }
 .modal-content {
   z-index: 999;
-  position: absolute;
-  top: 400%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 32%;
+  left: 38%;
   line-height: 1.4;
   background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(155, 211, 253) 0%, rgb(189, 238, 248) 90.1% );
-  
-  
   padding: 14px 28px;
   border-radius: 10px;
   max-width: 600px;
   min-width: 300px;
+  
 }
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  animation: slideIn .8s linear, fadeIn 1s;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(400px);
+    animation-timing-function: ease-out;
+  }
+  60% {
+    transform: translateY(-30px);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: translateY(10px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 
 .close-modal {
   position: absolute;
