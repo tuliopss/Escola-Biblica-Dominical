@@ -32,14 +32,15 @@ section {
   left: 0;
   right: 0;
   padding: 1em;
-  background-image: url('https://www.creativefabrica.com/wp-content/uploads/2020/08/29/Blue-sky-with-white-Clouds-Graphics-5178971-1.jpg');
+  width: 100%;
+  margin-bottom: 2em;
+  background-image: url("https://www.creativefabrica.com/wp-content/uploads/2020/08/29/Blue-sky-with-white-Clouds-Graphics-5178971-1.jpg");
   background-size: cover; /* para redimensionar a imagem para cobrir toda a área da .nav-bar */
   background-position: center; /* para centralizar a imagem */
   text-align: center;
   color: #ffffff;
   z-index: 999;
 }
-
 
 .nav-bar .logo-nav {
   text-decoration: none;
@@ -306,14 +307,16 @@ nav li:hover {
     display: -ms-flexbox;
     display: flex;
   }
-  .nav-bar nav a, .sairnav {
+  .nav-bar nav a,
+  .sairnav {
     color: #ffffff;
-    text-shadow: -1px 1px 0 rgba(201, 198, 15, 0.507), 1px 1px 0 rgba(201, 198, 15, 0.534);
+    text-shadow: -1px 1px 0 rgba(201, 198, 15, 0.507),
+      1px 1px 0 rgba(201, 198, 15, 0.534);
     padding: 0.1em 1em;
     font-size: 1em;
     font-family: "sans-serif", sans-serif;
   }
-  
+
   .nav-bar ul.primary-nav {
     margin: 0;
     margin-left: 40%;
@@ -492,7 +495,6 @@ nav li:hover {
     display: flex;
   }
 }
-
 
 .footer {
   height: 25px;

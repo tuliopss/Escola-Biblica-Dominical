@@ -23,9 +23,9 @@ function App() {
     <>
       <BrowserRouter>
         <UserProvider>
-          <Message />
           <Container>
             <Navbar />
+            <Message />
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/notas' element={<Notas />} />
