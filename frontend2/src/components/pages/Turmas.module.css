@@ -1,5 +1,15 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
 .turmas_header {
-  margin-bottom: 2em;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -10,6 +20,9 @@
 }
 
 .turma_container {
+  background-color: #ddd;
+  padding: 10px 0;
+  text-align: center;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -31,7 +44,9 @@
   padding: 8px;
 }
 
-a {
+.turma_card a {
+  margin: 0 10px;
+  text-decoration: none;
   color: #000;
 }
 
@@ -46,4 +61,14 @@ a {
   cursor: pointer;
   font-size: 1.1em;
   font-weight: bold;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }

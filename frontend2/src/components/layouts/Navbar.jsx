@@ -37,7 +37,7 @@ const Navbar = () => {
             <li>
               <ModalLogin />
             </li>
-            <li onClick={logout}>Sair</li>
+            <li className='sairnav' onClick={logout}>Sair</li>
           </ul>
         </nav>
       </div>

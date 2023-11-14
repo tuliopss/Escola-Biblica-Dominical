@@ -27,14 +27,24 @@ section {
 
 /* --- NAVIGATION STYLE ---*/
 .nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 1em;
+  background-image: url('https://www.creativefabrica.com/wp-content/uploads/2020/08/29/Blue-sky-with-white-Clouds-Graphics-5178971-1.jpg');
+  background-size: cover; /* para redimensionar a imagem para cobrir toda a área da .nav-bar */
+  background-position: center; /* para centralizar a imagem */
   text-align: center;
+  color: #ffffff;
+  z-index: 999;
 }
+
 
 .nav-bar .logo-nav {
   text-decoration: none;
   font-weight: bold;
-  color: #444;
+  color: #ffd700;
   font-size: 1.2em;
 }
 
@@ -201,7 +211,7 @@ textarea {
 }
 
 input[type="submit"] {
-  background-color: var(--primary-color);
+  background-color: rgb(100, 178, 209);
   color: #fff;
   text-decoration: none;
   font-size: 1.3em;
@@ -239,7 +249,7 @@ nav ul.primary-nav {
 }
 
 nav li a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   display: block;
   padding: 1em;
@@ -296,11 +306,14 @@ nav li:hover {
     display: -ms-flexbox;
     display: flex;
   }
-  .nav-bar nav a {
-    color: #000;
+  .nav-bar nav a, .sairnav {
+    color: #ffffff;
+    text-shadow: -1px 1px 0 rgba(201, 198, 15, 0.507), 1px 1px 0 rgba(201, 198, 15, 0.534);
     padding: 0.1em 1em;
     font-size: 1em;
+    font-family: "sans-serif", sans-serif;
   }
+  
   .nav-bar ul.primary-nav {
     margin: 0;
     margin-left: 40%;
@@ -342,7 +355,7 @@ nav li:hover {
 
   .btn-15 {
     font-weight: bold;
-    background: #133ba7;
+    background: #5f7cce;
     border: none;
     z-index: 1;
   }
@@ -354,7 +367,7 @@ nav li:hover {
     top: 0;
     right: 0;
     z-index: -1;
-    background-color: rgb(3, 49, 255);
+    background-color: rgb(93, 119, 248);
     border-radius: 5px;
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
       7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
@@ -472,20 +485,22 @@ nav li:hover {
   }
 }
 
-@media width < 500px {
+@media screen and (max-width: 500px) {
   * {
     overflow: scroll;
-    margin: auto auto;
+    margin: auto;
     display: flex;
   }
 }
 
+
 .footer {
   height: 25px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-color);
+  background-color: rgb(101, 155, 173);
   color: #ffffff;
-  border-top: 1px solid rgb(122, 140, 199);
+  border-top: 1px solid rgb(195, 197, 202);
 }
