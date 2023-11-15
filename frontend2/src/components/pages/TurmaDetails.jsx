@@ -17,35 +17,12 @@ const TurmaDetails = () => {
   const { setFlashMessage } = useFlashMessage();
   const [token] = useState(localStorage.getItem("token") || "");
 
-  // const columns = {[
-  //   { field: 'username'},
-  //   { field: 'age' },
-  //   { field: 'desk' },
-  // ]}
-
   const addAlunos = async () => {
     let msgType = "success";
     let msgText = "Alunos atualizados com sucesso.";
 
     try {
       const response = await api.post("/classroom/insertStudents");
-      const alunos = response.data;
-
-      setAlunos(alunos);
-    } catch (error) {
-      msgText = "error";
-      msgText = "Houve um erro, tente novamente mais tarde.";
-    }
-
-    setFlashMessage(msgText, msgType);
-  };
-
-  const handlePresence = async (e) => {
-    let msgType = "success";
-    let msgText = "Alunos atualizados com sucesso.";
-
-    try {
-      const response = await api.patch("/student/presence/" + alunos.id);
       const alunos = response.data;
 
       setAlunos(alunos);
@@ -105,23 +82,21 @@ const TurmaDetails = () => {
                     <span style={{ color: params.value ? "green" : "red" }}>
                       {params.value ? "Presente" : "Ausente"}{" "}
                       <Checkbox
-                        // checked={params.value}
+                        checked={params.value}
                         onChange={async (e) => {
-                          // Aqui você pode tratar a alteração de estado do Checkbox
                           const newAlunos = [...alunos];
                           const alunoIndex = newAlunos.findIndex(
                             (aluno) => aluno.id === params.id
                           );
+                          const alunoId = newAlunos[alunoIndex].id;
                           newAlunos[alunoIndex].presenca = e.target.checked;
 
                           setAlunos(newAlunos);
 
                           try {
-                            await api.patch(`student/presence/${id}`);
+                            await api.patch(`student/presence/${alunoId}`);
                           } catch (error) {}
                         }}
-                        getRowId={(row) => row.id}
-                        onCellClick={handleCellClick}
                       />
                     </span>
                   ),
