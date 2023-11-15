@@ -27,7 +27,7 @@ router.post(
 
 router.post(
   "/insertStudents",
-  authGuard,
+  // authGuard,
   ClassroomController.insertStudentIntoClassByCategory
 );
 router.post(

@@ -17,23 +17,6 @@ const TurmaDetails = () => {
   const { setFlashMessage } = useFlashMessage();
   const [token] = useState(localStorage.getItem("token") || "");
 
-  const addAlunos = async () => {
-    let msgType = "success";
-    let msgText = "Alunos atualizados com sucesso.";
-
-    try {
-      const response = await api.post("/classroom/insertStudents");
-      const alunos = response.data;
-
-      setAlunos(alunos);
-    } catch (error) {
-      msgText = "error";
-      msgText = "Houve um erro, tente novamente mais tarde.";
-    }
-
-    setFlashMessage(msgText, msgType);
-  };
-
   useEffect(() => {
     api.get(`/classroom/${id}`).then((response) => {
       setTurma(response.data);
@@ -41,6 +24,34 @@ const TurmaDetails = () => {
       setAlunos(response.data.alunos);
     });
   }, [id]);
+
+  const renderStudents = async () => {
+    await api.get(`/classroom/${id}/students`).then((response) => {
+      setAlunos(response.data);
+    });
+  };
+
+  const addAlunos = async () => {
+    let msgType = "success";
+    let msgText = "Alunos atualizados com sucesso.";
+
+    try {
+      const insertStudents = await api
+        .post("/classroom/insertStudents")
+        .then((response) => {
+          const newAlunos = [...alunos];
+          setAlunos(newAlunos);
+          return response.data;
+        });
+
+      renderStudents();
+    } catch (error) {
+      msgText = "error";
+      msgText = "Houve um erro, tente novamente mais tarde.";
+    }
+
+    setFlashMessage(msgText, msgType);
+  };
 
   // useEffect(() => {}, [id]);
   const handleCellClick = (e) => {
@@ -63,7 +74,7 @@ const TurmaDetails = () => {
             <div className={styles.students_header}>
               <h3>Alunos inseridos nessa turma: </h3>
 
-              <button className={styles.att_alunos_btn}>
+              <button className={styles.att_alunos_btn} onClick={addAlunos}>
                 Atualizar alunos dessa turma
               </button>
             </div>
@@ -95,7 +106,9 @@ const TurmaDetails = () => {
 
                           try {
                             await api.patch(`student/presence/${alunoId}`);
-                          } catch (error) {}
+                          } catch (error) {
+                            console.log(error);
+                          }
                         }}
                       />
                     </span>
