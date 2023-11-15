@@ -17,13 +17,13 @@ const TurmaDetails = () => {
   const { setFlashMessage } = useFlashMessage();
   const [token] = useState(localStorage.getItem("token") || "");
 
-  useEffect(() => {
+  const getClassroom = async () => {
     api.get(`/classroom/${id}`).then((response) => {
       setTurma(response.data);
       setProfessor(response.data.professor);
       setAlunos(response.data.alunos);
     });
-  }, [id]);
+  };
 
   const renderStudents = async () => {
     await api.get(`/classroom/${id}/students`).then((response) => {
@@ -32,19 +32,28 @@ const TurmaDetails = () => {
   };
 
   const addAlunos = async () => {
+    const insertStudents = await api
+      .post("/classroom/insertStudents")
+      .then((response) => {
+        const newAlunos = [...alunos];
+        setAlunos(newAlunos);
+        return response.data;
+      });
+    renderStudents();
+  };
+
+  useEffect(() => {
+    Promise.all([getClassroom(), renderStudents(), addAlunos()]).then(() => {
+      console.log("funcitons on");
+    });
+  }, [id]);
+
+  const handleAddAlunos = async () => {
     let msgType = "success";
     let msgText = "Alunos atualizados com sucesso.";
 
     try {
-      const insertStudents = await api
-        .post("/classroom/insertStudents")
-        .then((response) => {
-          const newAlunos = [...alunos];
-          setAlunos(newAlunos);
-          return response.data;
-        });
-
-      renderStudents();
+      addAlunos();
     } catch (error) {
       msgText = "error";
       msgText = "Houve um erro, tente novamente mais tarde.";
@@ -53,10 +62,6 @@ const TurmaDetails = () => {
     setFlashMessage(msgText, msgType);
   };
 
-  // useEffect(() => {}, [id]);
-  const handleCellClick = (e) => {
-    console.log("click");
-  };
   return (
     <>
       {turma.disciplina && (
@@ -74,7 +79,9 @@ const TurmaDetails = () => {
             <div className={styles.students_header}>
               <h3>Alunos inseridos nessa turma: </h3>
 
-              <button className={styles.att_alunos_btn} onClick={addAlunos}>
+              <button
+                className={styles.att_alunos_btn}
+                onClick={handleAddAlunos}>
                 Atualizar alunos dessa turma
               </button>
             </div>
