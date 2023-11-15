@@ -24,7 +24,14 @@ module.exports = class ClassroomController {
     try {
       const classroom = await Classroom.findOne({
         where: { id: id },
-        include: Student,
+        include: [
+          {
+            model: Student,
+          },
+          {
+            model: Teacher,
+          },
+        ],
       });
 
       if (!classroom) {

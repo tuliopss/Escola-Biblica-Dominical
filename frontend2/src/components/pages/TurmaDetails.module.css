@@ -1,4 +1,6 @@
 .turma_details_container {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
 }
 .turma_details_container p {
@@ -6,4 +8,48 @@
 }
 .turma_details_container header {
   margin-bottom: 2em;
+}
+
+.students_header {
+  display: flex;
+  align-items: center; /* Para centralizar verticalmente */
+  margin-bottom: 10px; /* Ajuste conforme necessário */
+  /* background-color: grey; */
+}
+
+.att_alunos_btn {
+  border-radius: 8px;
+  background-color: #254bb4;
+  color: #fff;
+  border: none;
+  width: 50%;
+  height: 50%;
+  margin-left: 10px; /* Adicione margem à esquerda para separar do texto */
+  padding: 0.5em;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.turma_info h2 {
+  font-size: 1.2em;
+  border-bottom: 0.5px solid #000;
+}
+
+.turma_info p {
+  color: #010101;
+}
+.turma_info {
+  padding: 1em;
+  background-color: #3d5ebb;
+  width: 25%;
+  height: 100%;
+}
+
+.presente {
+  color: green;
+}
+
+.ausente {
+  color: red;
 }

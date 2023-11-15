@@ -5,7 +5,9 @@
   align-items: center;
   max-width: 300px;
   margin: 0 auto;
+  margin-top: 2em;
   margin-bottom: 100px;
+  padding: 1.2em;
   background-color: #fff;
   border-radius: 15px;
 }
