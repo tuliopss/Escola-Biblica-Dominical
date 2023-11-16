@@ -199,4 +199,24 @@ module.exports = class ClassroomController {
         .json({ errors: ["Houve um erro, tente novamente mais tarde."] });
     }
   }
+
+  static async deleteClassroom(req, res) {
+    const id = req.params.id;
+
+    const classroom = await Classroom.findByPk(id);
+
+    if (!classroom) {
+      res.status(404).json({ errors: ["Turma não encontrada"] });
+    }
+
+    try {
+      await Classroom.destroy({ where: { id: classroom.id } });
+
+      res.status(200).json({ message: "Turma excluída com sucesso." });
+    } catch (error) {
+      res
+        .status(404)
+        .json({ errors: ["Houveu um erro, tente novamente mais tarde"] });
+    }
+  }
 };

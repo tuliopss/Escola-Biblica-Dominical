@@ -259,13 +259,13 @@ nav li a {
   transition: font-weight 0.2s;
 }
 
-nav li a:hover, nav .sairnav:hover {
+nav li a:hover,
+nav .sairnav:hover {
   font-weight: bold;
   cursor: pointer;
 }
 nav li:hover {
   font-weight: bold;
-
 }
 
 .mobile-menu-exit {

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import * as React from "react";
 import Button from "@mui/material/Button";
 import api from "../../utils/api";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./TurmaDetails.module.css";
 import useFlashMessage from "../../hooks/useFlashMessage";
 import { DataGrid } from "@mui/x-data-grid";
-import Checkbox from "@mui/material/Checkbox"; // Importe o Checkbox
+import Checkbox from "@mui/material/Checkbox";
 
 const TurmaDetails = () => {
   const [turma, setTurma] = useState([]);
@@ -44,7 +43,7 @@ const TurmaDetails = () => {
 
   useEffect(() => {
     Promise.all([getClassroom(), renderStudents(), addAlunos()]).then(() => {
-      console.log("funcitons on");
+      console.log("functions on");
     });
   }, [id]);
 
@@ -62,6 +61,27 @@ const TurmaDetails = () => {
     setFlashMessage(msgText, msgType);
   };
 
+  const deleteTurma = async () => {
+    let msgType = "success";
+
+    const data = await api
+      .delete(`/classroom/deleteClassroom/${id}`)
+      .then((response) => {
+        navigate("/turmas");
+
+        return response.data;
+      })
+      .catch((error) => {
+        msgType = "error";
+        return error.response.data;
+      });
+
+    setFlashMessage(data.message, msgType);
+    if (msgType != "error") {
+      navigate("/turmas");
+    }
+  };
+
   return (
     <>
       {turma.disciplina && (
@@ -74,7 +94,13 @@ const TurmaDetails = () => {
             <p>
               Professor: {professor.nome} - {professor.email}
             </p>
+            <div>
+              <button className={styles.delete_btn} onClick={deleteTurma}>
+                Excluir turma
+              </button>
+            </div>
           </div>
+
           <div className={styles.students_container}>
             <div className={styles.students_header}>
               <h3>Alunos inseridos nessa turma: </h3>

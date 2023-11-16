@@ -27,13 +27,19 @@ router.post(
 
 router.post(
   "/insertStudents",
-  // authGuard,
+  authGuard,
   ClassroomController.insertStudentIntoClassByCategory
 );
 router.post(
   "/insertTeacher/:id",
   authGuard,
   ClassroomController.insertTeacherIntoClass
+);
+
+router.delete(
+  "/deleteClassroom/:id",
+  authGuard,
+  ClassroomController.deleteClassroom
 );
 router.delete(
   "/deleteStudent/:id",

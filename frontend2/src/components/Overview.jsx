@@ -7,21 +7,27 @@ const Overview = () => {
   const [alunos, setAlunos] = useState([]);
   const [teachers, setTeachers] = useState([]);
 
-  useEffect(() => {
+  const getClassrooms = () => {
     api.get("/classroom").then((response) => {
       setTurmas(response.data);
     });
-  }, []);
+  };
 
-  useEffect(() => {
+  const getStudents = () => {
     api.get("/student").then((response) => {
       setAlunos(response.data);
     });
-  }, []);
+  };
 
-  useEffect(() => {
+  const getTeachers = () => {
     api.get("/teacher").then((response) => {
       setTeachers(response.data);
+    });
+  };
+
+  useEffect(() => {
+    Promise.all([getClassrooms(), getStudents(), getTeachers()]).then(() => {
+      console.log("overview on");
     });
   }, []);
 
