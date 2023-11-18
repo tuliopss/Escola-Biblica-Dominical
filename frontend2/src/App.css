@@ -495,13 +495,13 @@ nav li:hover {
   }
 }
 
-@media screen and (max-width: 500px) {
+/*@media screen and (max-width: 500px) {
   * {
     overflow: scroll;
     margin: auto;
     display: flex;
   }
-}
+}*/
 
 .footer {
   height: 25px;
