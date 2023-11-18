@@ -6,17 +6,13 @@ body {
 }
 
 .turmas_header {
-  background-color: #333;
-  color: #fff;
+  /* background-color: #333; */
+  color: #000;
   padding: 10px 0;
   text-align: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.turmas_header h1 {
-  margin-bottom: 0.3em;
 }
 
 .turma_container {
@@ -35,6 +31,7 @@ body {
   flex-direction: column;
   text-align: center;
   background-color: #133ba7;
+  padding-bottom: 0.2em;
 }
 
 .turma_card h3 {
@@ -45,8 +42,24 @@ body {
 }
 
 .turma_card a {
-  margin: 0 10px;
+  /* margin: 0 10px;
   text-decoration: none;
+  color: #000; */
+  text-decoration: none;
+  background-color: #254bb4;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 5px;
+  border: 2px solid #16479d;
+  font-size: 1.1em;
+  padding: 15px;
+  margin-top: 12px;
+}
+
+.turma_card a:hover {
+  background-color: #ddd;
   color: #000;
 }
 
