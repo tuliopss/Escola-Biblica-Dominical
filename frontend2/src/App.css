@@ -4,6 +4,11 @@
   --primary-color: #133ba7;
 }
 
+:root {
+  --azulshadow: #65a6e7;
+  --brancoshadow: #ffffff;
+}
+
 body {
   background: #fff;
   margin: 0;
@@ -27,12 +32,11 @@ section {
 
 /* --- NAVIGATION STYLE ---*/
 .nav-bar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   padding: 1em;
-  width: 100%;
   margin-bottom: 2em;
   background-image: url("https://www.creativefabrica.com/wp-content/uploads/2020/08/29/Blue-sky-with-white-Clouds-Graphics-5178971-1.jpg");
   background-size: cover; /* para redimensionar a imagem para cobrir toda a área da .nav-bar */
@@ -263,6 +267,8 @@ nav li a:hover,
 nav .sairnav:hover {
   font-weight: bold;
   cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
 }
 nav li:hover {
   font-weight: bold;
@@ -489,25 +495,24 @@ nav li:hover {
   }
 }
 
-@media screen and (max-width: 500px) {
+/*@media screen and (max-width: 500px) {
   * {
     overflow: scroll;
     margin: auto;
     display: flex;
   }
-}
+}*/
 
 .footer {
   height: 25px;
-  position: fixed;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(101, 155, 173);
+  background-color: rgb(173, 213, 226);
   color: #ffffff;
   border-top: 1px solid rgb(195, 197, 202);
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
+  margin-top: auto; /* Isso empurra o footer para a parte inferior do contêiner pai */
 }
+
+

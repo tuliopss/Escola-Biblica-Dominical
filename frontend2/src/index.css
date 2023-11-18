@@ -1,6 +1,5 @@
 body {
   margin-top: 70px;
-  margin-bottom: 25px;
   background: rgb(255, 255, 255);
   background: radial-gradient(
     circle,
@@ -12,6 +11,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+._container_nwi5k_1 {
+  min-height: 48.8rem;
 }
 
 code {
