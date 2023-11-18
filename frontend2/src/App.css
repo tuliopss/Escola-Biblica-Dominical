@@ -302,7 +302,7 @@ nav li:hover {
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: flex-end;
     background: none;
     position: unset;
     height: auto;
@@ -316,6 +316,8 @@ nav li:hover {
   }
   .nav-bar nav a,
   .sairnav {
+    display: flex;
+    justify-content: flex-end;
     color: #ffffff;
     text-shadow: -1px 1px 0 rgba(201, 198, 15, 0.507),
       1px 1px 0 rgba(201, 198, 15, 0.534);
@@ -514,5 +516,3 @@ nav li:hover {
   border-top: 1px solid rgb(195, 197, 202);
   margin-top: auto; /* Isso empurra o footer para a parte inferior do contêiner pai */
 }
-
-

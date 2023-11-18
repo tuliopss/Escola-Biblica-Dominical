@@ -1,10 +1,12 @@
-import React from "react";
+import { useContext } from "react";
 import Overview from "../Overview";
-
+import { Context } from "../../context/UserContext";
 const Home = () => {
+  const { authenticated } = useContext(Context);
   return (
     <>
-      <Overview />
+      {authenticated && <Overview />}
+
       <section className='hero'>
         <div className='container'>
           <div className='left-col'>

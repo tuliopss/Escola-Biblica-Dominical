@@ -21,28 +21,41 @@ const Navbar = () => {
         </Link>
         <nav>
           <ul className='primary-nav'>
-            <li
-              className={location.pathname === "/professores" ? "current" : ""}>
-              <Link to='/professores'>Professores</Link>
-            </li>
-            <li className={location.pathname === "/turmas" ? "current" : ""}>
-              <Link to='/turmas'>Turmas</Link>
-            </li>
-            <li className={location.pathname === "/alunos" ? "current" : ""}>
-              <Link to='/alunos/dashborad'>Alunos</Link>
-            </li>
-            <li className={location.pathname === "/profile" ? "current" : ""}>
-              <Link to='/profile'>Meu perfil</Link>
-            </li>
-            <li>
-              <ModalCadastro />
-            </li>
-            <li>
-              <ModalLogin />
-            </li>
-            <li className='sairnav' onClick={logout}>
-              Sair
-            </li>
+            {authenticated ? (
+              <>
+                {" "}
+                <li
+                  className={
+                    location.pathname === "/professores" ? "current" : ""
+                  }>
+                  <Link to='/professores'>Professores</Link>
+                </li>
+                <li
+                  className={location.pathname === "/turmas" ? "current" : ""}>
+                  <Link to='/turmas'>Turmas</Link>
+                </li>
+                <li
+                  className={location.pathname === "/alunos" ? "current" : ""}>
+                  <Link to='/alunos/dashborad'>Alunos</Link>
+                </li>
+                <li
+                  className={location.pathname === "/profile" ? "current" : ""}>
+                  <Link to='/profile'>Meu perfil</Link>
+                </li>
+                <li className='sairnav' onClick={logout}>
+                  Sair
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <ModalCadastro />
+                </li>
+                <li>
+                  <ModalLogin />
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>

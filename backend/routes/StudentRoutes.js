@@ -14,8 +14,10 @@ router.post(
   "/create",
   studentsInsertValidations(),
   validate,
+  authGuard,
   StudentController.InsertStudent
 );
+
 router.delete("/delete/:id", authGuard, StudentController.deleteStudent);
 router.patch("/update/:id", authGuard, StudentController.updateStudent);
 router.patch("/presence/:id", authGuard, StudentController.studentPresence);

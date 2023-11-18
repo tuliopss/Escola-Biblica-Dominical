@@ -14,10 +14,9 @@ const useAuth = () => {
 
     if (token) {
       api.defaults.headers.authorization = `Bearer ${JSON.parse(token)}`;
+      setAuthenticated(true);
     }
-
-    setAuthenticated(true);
-  });
+  }, []);
 
   const register = async (user) => {
     let msgText = "Cadastro realizado com sucesso!";
