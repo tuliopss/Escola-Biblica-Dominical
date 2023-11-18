@@ -18,6 +18,7 @@ import TurmaDetails from "./components/pages/TurmaDetails";
 import Overview from "./components/Overview";
 import AddTurma from "./components/pages/AddTurma";
 import Profile from "./components/pages/Profile";
+import TeacherList from "./components/pages/TeacherList";
 function App() {
   return (
     <>
@@ -32,7 +33,7 @@ function App() {
               <Route path='/notas' element={<Notas />} />
               <Route path='/turmas' element={<Turmas />} />
               <Route path='/turmas/:id' element={<TurmaDetails />} />
-              <Route path='/atividades' element={<Atividades />} />
+              <Route path='/professores' element={<TeacherList />} />
               <Route path='/addTurma' element={<AddTurma />} />
               <Route path='/profile' element={<Profile />} />
             </Routes>

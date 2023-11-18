@@ -112,11 +112,12 @@ const TurmaDetails = () => {
               </button>
             </div>
             <DataGrid
+              disableRowSelectionOnClick
               rows={alunos}
               columns={[
-                { field: "id", headerName: "ID", width: 100 },
+                { field: "id", headerName: "ID", flex: 0.2, width: 100 },
                 { field: "nome", headerName: "Nome", flex: 1, width: 200 },
-                { field: "email", headerName: "Email", flex: 1, width: 200 },
+                { field: "email", headerName: "Email", flex: 2, width: 200 },
                 { field: "idade", headerName: "Idade", width: 100 },
                 {
                   field: "presenca",

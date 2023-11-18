@@ -21,15 +21,15 @@ const Navbar = () => {
         </Link>
         <nav>
           <ul className='primary-nav'>
-            <li className={location.pathname === "/notas" ? "current" : ""}>
-              <Link to='/notas'>Notas</Link>
+            <li
+              className={location.pathname === "/professores" ? "current" : ""}>
+              <Link to='/professores'>Professores</Link>
             </li>
             <li className={location.pathname === "/turmas" ? "current" : ""}>
               <Link to='/turmas'>Turmas</Link>
             </li>
-            <li
-              className={location.pathname === "/atividades" ? "current" : ""}>
-              <Link to='/atividades'>Atividades</Link>
+            <li className={location.pathname === "/alunos" ? "current" : ""}>
+              <Link to='/alunos/dashborad'>Alunos</Link>
             </li>
             <li className={location.pathname === "/profile" ? "current" : ""}>
               <Link to='/profile'>Meu perfil</Link>
@@ -40,7 +40,9 @@ const Navbar = () => {
             <li>
               <ModalLogin />
             </li>
-            <li className='sairnav' onClick={logout}>Sair</li>
+            <li className='sairnav' onClick={logout}>
+              Sair
+            </li>
           </ul>
         </nav>
       </div>

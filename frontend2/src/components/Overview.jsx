@@ -39,7 +39,7 @@ const Overview = () => {
         </Link>
       </div>
       <div className={styles.teachers_card}>
-        <Link>
+        <Link to='/professores'>
           <span>{teachers.length}</span> <p>PROFESSORES</p>
         </Link>
       </div>

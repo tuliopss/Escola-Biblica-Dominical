@@ -13,13 +13,9 @@ body {
 }
 
 .turmas_header {
-<<<<<<< HEAD
-  
-=======
   background-image: linear-gradient(to top, #e2ebf0 0%, #ace0f9 100%);
   color: #fff;
   padding: 20px;
->>>>>>> acf819e4c8bc0cd51573d4a137b1e9220966d914
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -33,15 +29,13 @@ body {
   --brancoshadow: #ffffff;
 }
 
-<<<<<<< HEAD
-=======
 .turmas_header h1 {
   margin: 0;
   color: #f3f3f3;
-  text-shadow: 1px 1px 3px var(--azulshadow), -1px 1px 3px var(--azulshadow), 1px -1px 3px var(--azulshadow), -1px -1px 3px var(--azulshadow);
+  text-shadow: 1px 1px 3px var(--azulshadow), -1px 1px 3px var(--azulshadow),
+    1px -1px 3px var(--azulshadow), -1px -1px 3px var(--azulshadow);
 }
 
->>>>>>> acf819e4c8bc0cd51573d4a137b1e9220966d914
 .turma_container {
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   padding: 1.5rem; /* Ajustado para manter o espaçamento entre o header e os cards */
@@ -53,42 +47,38 @@ body {
   border-bottom-right-radius: 1.5rem;
 }
 
-
-
 .turma_card {
-  width: 28%;
+  width: 22%;
   height: 20rem;
   margin: 1.5%;
   display: flex;
   flex-direction: column;
   text-align: center;
-<<<<<<< HEAD
-  */
-=======
+
   background-size: cover;
   background-position: center;
   border-radius: 1.5rem;
   overflow: hidden;
->>>>>>> acf819e4c8bc0cd51573d4a137b1e9220966d914
 }
 
 .turma_card:hover {
-  transform: scale(1.05); 
-  transition: transform 0.3s ease; 
-  box-shadow: 4px 4px 10px var(--brancoshadow), -4px 4px 10px var(--brancoshadow), 4px -4px 10px var(--brancoshadow), -4px -4px 10px var(--brancoshadow);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  box-shadow: 4px 4px 10px var(--brancoshadow),
+    -4px 4px 10px var(--brancoshadow), 4px -4px 10px var(--brancoshadow),
+    -4px -4px 10px var(--brancoshadow);
 }
-
 
 .turma_card h3 {
   color: #f1f1f1;
   margin-bottom: 1em;
   font-size: 1.6em;
   padding: 0.3rem;
-  text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000, -1px -1px 2px #000;
+  text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000,
+    -1px -1px 2px #000;
 }
 
 .turma_card a {
-<<<<<<< HEAD
   /* margin: 0 10px;
   text-decoration: none;
   color: #000; */
@@ -108,26 +98,32 @@ body {
 .turma_card a:hover {
   background-color: #ddd;
   color: #000; */
-=======
+
   font-family: sans-serif;
   margin-top: 16px;
   text-decoration: none;
   color: #ffffff;
-  text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000, -1px -1px 2px #000;
+  text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000,
+    -1px -1px 2px #000;
 }
 
 .turma_card p {
   font-family: sans-serif;
   color: #ffffff;
-  text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000, -1px -1px 2px #000;
->>>>>>> acf819e4c8bc0cd51573d4a137b1e9220966d914
+  text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000,
+    -1px -1px 2px #000;
 }
 
 .btn_add_turma {
   border-radius: 8px;
-  background-image: linear-gradient(to right, #97cbd3 0%, #7bbdc9  51%, #4CA1AF  100%);
+  background-image: linear-gradient(
+    to right,
+    #97cbd3 0%,
+    #7bbdc9 51%,
+    #4ca1af 100%
+  );
   color: #fff;
-  transition: .5s;
+  transition: 0.5s;
   background-size: 200% auto;
   box-shadow: 0 0 4px #eee;
   border: none;
@@ -139,15 +135,16 @@ body {
   font-weight: bold;
 }
 
-
-.btn_add_turma:hover{
+.btn_add_turma:hover {
   background-position: right center;
   color: #fff;
   font-size: 1.3em;
   min-height: 2.6em;
   width: 210px;
   text-decoration: none;
-  box-shadow: 3px 3px 10px var(--brancoshadow), -3px 3px 10px var(--brancoshadow), 3px -3px 10px var(--brancoshadow), -3px -3px 10px var(--brancoshadow);
+  box-shadow: 3px 3px 10px var(--brancoshadow),
+    -3px 3px 10px var(--brancoshadow), 3px -3px 10px var(--brancoshadow),
+    -3px -3px 10px var(--brancoshadow);
 }
 
 footer {
@@ -159,4 +156,3 @@ footer {
   width: 100%;
   bottom: 0;
 }
-
