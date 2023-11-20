@@ -19,6 +19,8 @@ import Overview from "./components/Overview";
 import AddTurma from "./components/pages/AddTurma";
 import Profile from "./components/pages/Profile";
 import TeacherList from "./components/pages/TeacherList";
+import DashAlunos from "./components/pages/DashAlunos";
+import AlunoDestalhes from "./components/pages/AlunoDetalhes";
 function App() {
   return (
     <>
@@ -36,6 +38,8 @@ function App() {
               <Route path='/professores' element={<TeacherList />} />
               <Route path='/addTurma' element={<AddTurma />} />
               <Route path='/profile' element={<Profile />} />
+              <Route path='/dashboard' element={<DashAlunos />} />
+              <Route path='/student/:id' element={<AlunoDestalhes />} />
             </Routes>
           </Container>
           <Footer />
