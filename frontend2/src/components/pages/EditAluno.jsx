@@ -10,15 +10,21 @@ const EditAluno = () => {
   const [aluno, setAluno] = useState({});
   const { setFlashMessage } = useFlashMessage();
   const navigate = useNavigate();
+  const [token] = useState(localStorage.getItem("token") || "");
 
   const getAluno = async () => {
     await api
-      .get(`/student/${id}`)
+      .get(`/student/${id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
       .then((response) => {
         setAluno(response.data);
       })
       .catch((err) => {
-        console.log("error");
+        msgType = "error";
+        return err.response.data;
       });
   };
 
@@ -31,9 +37,15 @@ const EditAluno = () => {
     let msgText = "Aluno editado com sucesso.";
 
     try {
-      await api.patch(`/student/update/${id}`, aluno).then((response) => {
-        return response.data;
-      });
+      await api
+        .patch(`/student/update/${id}`, aluno, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(token)}`,
+          },
+        })
+        .then((response) => {
+          return response.data;
+        });
       setFlashMessage(msgText, msgType);
       navigate("/alunos/dashboard");
     } catch (error) {

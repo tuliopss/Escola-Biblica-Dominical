@@ -10,6 +10,7 @@ const DetalhesAluno = () => {
   const [aluno, setAluno] = useState({});
   const [professor, setProfessor] = useState({});
   const { setFlashMessage } = useFlashMessage();
+  const [token] = useState(localStorage.getItem("token") || "");
 
   const [turmas, setTurmas] = useState([]);
 

@@ -26,15 +26,16 @@ export default function ModalCadastro() {
     console.log(user.disciplina);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    register(user);
+    if (await register(user)) {
+      toggleModal();
+    }
   };
 
   const toggleModal = () => {
     setModal(!modal);
-    
   };
 
   if (modal) {
@@ -50,10 +51,10 @@ export default function ModalCadastro() {
       </Link>
 
       {modal && (
-        <div id="wrapper">
+        <div id='wrapper'>
           <div className='modal'>
             <div onClick={toggleModal} className='overlay'></div>
-            
+
             <div className='modal-content'>
               <form onSubmit={handleSubmit} id='form' method='post'>
                 <div className='box' id='divForm'>

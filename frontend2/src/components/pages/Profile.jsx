@@ -1,6 +1,6 @@
 import api from "../../utils/api";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 
 import styles from "./Profile.module.css";
 import useFlashMessage from "../../hooks/useFlashMessage";
@@ -13,23 +13,58 @@ const Profile = () => {
   const { setFlashMessage } = useFlashMessage();
   const disciplinas = ["Etica", "Teologia", "Evangelho", "Criacao", "Historia"];
 
-  useEffect(() => {
-    api
-      .get("/teacher/profile", {
+  // const getTeacherProfile = async () => {
+  //   try {
+  //     const response = await api.get("/teacher/profile", {
+  //       headers: {
+  //         Authorization: `Bearer ${JSON.parse(token)}`,
+  //       },
+  //     });
+
+  //     setUser(response.data);
+  //     await getTeacherClassrooms();
+  //   } catch (error) {}
+  // };
+
+  // const getTeacherClassrooms = async () => {
+  //   try {
+  //     const response = await api.get(`/teacher/${user.id}/classrooms`, {
+  //       headers: {
+  //         Authorization: `Bearer ${JSON.parse(token)}`,
+  //       },
+  //     });
+
+  //     setTurmas(response.data);
+  //     console.log(response.data.length);
+  //   } catch (error) {}
+  // };
+  const getTeacherProfile = async () => {
+    try {
+      const response = await api.get("/teacher/profile", {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
-      })
-      .then((response) => {
-        setUser(response.data);
       });
-  }, [token]);
+      setUser(response.data);
+      await getTeacherClassrooms(response.data.id);
+    } catch (error) {
+      console.error("Erro ao obter perfil do professor:", error);
+    }
+  };
+
+  const getTeacherClassrooms = async (id) => {
+    try {
+      const response = await api.get(`/teacher/${id}}/classrooms`);
+      const classrooms = response.data;
+      setTurmas(classrooms);
+    } catch (error) {
+      console.error("Erro ao obter salas de aula do professor:", error);
+    }
+  };
 
   useEffect(() => {
-    api.get(`/teacher/${user.id}/classrooms`).then((response) => {
-      setTurmas(response.data);
-    });
-  }, [token]);
+    Promise.all([getTeacherProfile()]);
+  }, []);
 
   const editUser = async (user) => {
     let msgType = "success";

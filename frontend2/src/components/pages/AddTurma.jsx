@@ -11,6 +11,7 @@ const AddTurma = () => {
   const [professores, setProfessores] = useState([]);
   const { setFlashMessage } = useFlashMessage();
   const navigate = useNavigate();
+  const [token] = useState(localStorage.getItem("token") || "");
 
   const disciplinas = ["Etica", "Teologia", "Evangelho", "Criacao", "Historia"];
   const categorias = [
@@ -34,9 +35,15 @@ const AddTurma = () => {
     let msgText = "Turma criada com sucesso.";
 
     try {
-      await api.post("/classroom/createClassroom", turma).then((response) => {
-        return response.data;
-      });
+      await api
+        .post("/classroom/createClassroom", turma, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(token)}`,
+          },
+        })
+        .then((response) => {
+          return response.data;
+        });
       setFlashMessage(msgText, msgType);
       navigate("/turmas");
     } catch (error) {
@@ -57,7 +64,6 @@ const AddTurma = () => {
     addTurma(turma);
   };
 
-  //className={FormStyles.form_container}
   return (
     <form className={styles.form_addTurma} onSubmit={handleSubmit}>
       <div className={styles.form_field}>

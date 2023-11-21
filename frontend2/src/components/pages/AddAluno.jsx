@@ -9,15 +9,22 @@ const AddAluno = () => {
   const [aluno, setAluno] = useState({});
   const { setFlashMessage } = useFlashMessage();
   const navigate = useNavigate();
+  const [token] = useState(localStorage.getItem("token") || "");
 
   const addAluno = async (aluno) => {
     let msgType = "success";
     let msgText = "Aluno cadastrado com sucesso.";
 
     try {
-      await api.post("/student/create", aluno).then((response) => {
-        return response.data;
-      });
+      await api
+        .post("/student/create", aluno, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(token)}`,
+          },
+        })
+        .then((response) => {
+          return response.data;
+        });
       setFlashMessage(msgText, msgType);
       navigate("/alunos/dashboard");
     } catch (error) {

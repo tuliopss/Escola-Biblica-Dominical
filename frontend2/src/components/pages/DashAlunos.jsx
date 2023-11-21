@@ -4,16 +4,41 @@ import { DataGrid } from "@mui/x-data-grid";
 import styles from "./DashAlunos.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
-
+import useFlashMessage from "../../hooks/useFlashMessage";
 const DashAlunos = () => {
-  const [alunos, setTurmas] = useState([]);
+  const [alunos, setAlunos] = useState([]);
   const navigate = useNavigate();
+  const { setFlashMessage } = useFlashMessage();
+  const [token] = useState(localStorage.getItem("token") || "");
 
   useEffect(() => {
     api.get("/student").then((response) => {
-      setTurmas(response.data);
+      setAlunos(response.data);
     });
   }, []);
+
+  const removeAluno = async (id) => {
+    let msgType = "success";
+
+    const data = await api
+      .delete(`/student/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        const updatedAluno = alunos.filter((aluno) => aluno.id != id);
+
+        setAlunos(updatedAluno); //Remove o pet do front
+        return response.data;
+      })
+      .catch((error) => {
+        msgType = "error";
+        return error.response.data;
+      });
+
+    setFlashMessage(data.message, msgType);
+  };
 
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
@@ -33,7 +58,13 @@ const DashAlunos = () => {
           <Link to={`/aluno/${params.id}`}>
             <button className={styles.details}>Detalhes</button>
           </Link>
-          <button className={styles.btn_delete}>Excluir</button>
+          <button
+            className={styles.btn_delete}
+            onClick={() => {
+              removeAluno(params.id);
+            }}>
+            Excluir
+          </button>
           {/* <Button
             variant='contained'
             color='primary'

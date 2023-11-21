@@ -4,11 +4,18 @@ import api from "../../utils/api";
 
 const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
+  const [token] = useState(localStorage.getItem("token") || "");
 
   const getTeachers = async () => {
-    await api.get("/teacher/").then((response) => {
-      setTeachers(response.data);
-    });
+    await api
+      .get("/teacher/", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setTeachers(response.data);
+      });
   };
 
   useEffect(() => {

@@ -6,23 +6,42 @@ const Overview = () => {
   const [turmas, setTurmas] = useState([]);
   const [alunos, setAlunos] = useState([]);
   const [teachers, setTeachers] = useState([]);
+  const [token] = useState(localStorage.getItem("token") || "");
 
   const getClassrooms = async () => {
-    await api.get("/classroom").then((response) => {
-      setTurmas(response.data);
-    });
+    api
+      .get("/classroom", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setTurmas(response.data);
+      });
   };
 
   const getStudents = async () => {
-    await api.get("/student").then((response) => {
-      setAlunos(response.data);
-    });
+    api
+      .get("/student", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setAlunos(response.data);
+      });
   };
 
   const getTeachers = async () => {
-    await api.get("/teacher").then((response) => {
-      setTeachers(response.data);
-    });
+    api
+      .get("/teacher", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setTeachers(response.data);
+      });
   };
 
   useEffect(() => {

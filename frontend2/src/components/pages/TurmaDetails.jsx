@@ -17,11 +17,17 @@ const TurmaDetails = () => {
   const [token] = useState(localStorage.getItem("token") || "");
 
   const getClassroom = async () => {
-    api.get(`/classroom/${id}`).then((response) => {
-      setTurma(response.data);
-      setProfessor(response.data.professor);
-      setAlunos(response.data.alunos);
-    });
+    api
+      .get(`/classroom/${id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
+      .then((response) => {
+        setTurma(response.data);
+        setProfessor(response.data.professor);
+        setAlunos(response.data.alunos);
+      });
   };
 
   const renderStudents = async () => {
@@ -32,7 +38,11 @@ const TurmaDetails = () => {
 
   const addAlunos = async () => {
     const insertStudents = await api
-      .post("/classroom/insertStudents")
+      .post("/classroom/insertStudents", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
       .then((response) => {
         const newAlunos = [...alunos];
         setAlunos(newAlunos);

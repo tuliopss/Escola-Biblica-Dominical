@@ -12,10 +12,12 @@ export default function ModalLogin() {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    login(user);
+    if (await login(user)) {
+      toggleModal();
+    }
   };
 
   const toggleModal = () => {
