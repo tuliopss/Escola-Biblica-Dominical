@@ -7,20 +7,20 @@ const Overview = () => {
   const [alunos, setAlunos] = useState([]);
   const [teachers, setTeachers] = useState([]);
 
-  const getClassrooms = () => {
-    api.get("/classroom").then((response) => {
+  const getClassrooms = async () => {
+    await api.get("/classroom").then((response) => {
       setTurmas(response.data);
     });
   };
 
-  const getStudents = () => {
-    api.get("/student").then((response) => {
+  const getStudents = async () => {
+    await api.get("/student").then((response) => {
       setAlunos(response.data);
     });
   };
 
-  const getTeachers = () => {
-    api.get("/teacher").then((response) => {
+  const getTeachers = async () => {
+    await api.get("/teacher").then((response) => {
       setTeachers(response.data);
     });
   };
@@ -34,7 +34,7 @@ const Overview = () => {
   return (
     <div className={styles.overview}>
       <div className={styles.students_card}>
-        <Link to='/alunos/dashborad'>
+        <Link to='/alunos/dashboard'>
           <span>{alunos.length}</span> <p>ALUNOS</p>
         </Link>
       </div>

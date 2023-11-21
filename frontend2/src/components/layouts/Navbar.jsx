@@ -36,7 +36,7 @@ const Navbar = () => {
                 </li>
                 <li
                   className={location.pathname === "/alunos" ? "current" : ""}>
-                  <Link to='/alunos/dashborad'>Alunos</Link>
+                  <Link to='/alunos/dashboard'>Alunos</Link>
                 </li>
                 <li
                   className={location.pathname === "/profile" ? "current" : ""}>

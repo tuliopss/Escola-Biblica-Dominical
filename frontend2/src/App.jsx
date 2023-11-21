@@ -21,6 +21,8 @@ import Profile from "./components/pages/Profile";
 import TeacherList from "./components/pages/TeacherList";
 import DashAlunos from "./components/pages/DashAlunos";
 import AlunoDestalhes from "./components/pages/AlunoDetalhes";
+import AddAluno from "./components/pages/AddAluno";
+import EditAluno from "./components/pages/EditAluno";
 function App() {
   return (
     <>
@@ -38,8 +40,10 @@ function App() {
               <Route path='/professores' element={<TeacherList />} />
               <Route path='/addTurma' element={<AddTurma />} />
               <Route path='/profile' element={<Profile />} />
-              <Route path='/dashboard' element={<DashAlunos />} />
-              <Route path='/student/:id' element={<AlunoDestalhes />} />
+              <Route path='/alunos/dashboard' element={<DashAlunos />} />
+              <Route path='/alunos/create' element={<AddAluno />} />
+              <Route path='/alunos/update/:id' element={<EditAluno />} />
+              <Route path='/aluno/:id' element={<AlunoDestalhes />} />
             </Routes>
           </Container>
           <Footer />

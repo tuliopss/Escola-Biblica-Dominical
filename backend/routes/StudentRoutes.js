@@ -7,7 +7,7 @@ const validate = require("../middlewares/handleValidation");
 const studentsInsertValidations = require("../middlewares/studentsValidations");
 const authGuard = require("../middlewares/authGuard");
 
-router.get("/", StudentController.getAllStudents);
+router.get("/", authGuard, StudentController.getAllStudents);
 router.get("/:id", authGuard, StudentController.getStudentById);
 
 router.post(

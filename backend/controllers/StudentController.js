@@ -2,6 +2,7 @@ const Student = require("../models/Student");
 const db = require("../db/conn");
 const jwt = require("jsonwebtoken");
 const Classroom = require("../models/Classroom");
+const Teacher = require("../models/Teacher");
 const jwtSecret = process.env.JWT_SECRET;
 
 module.exports = class StudentController {
@@ -83,7 +84,15 @@ module.exports = class StudentController {
     console.log(id);
 
     try {
-      const student = await Student.findByPk(id);
+      const student = await Student.findOne({
+        where: { id: id },
+        include: [
+          {
+            model: Classroom,
+            include: Teacher,
+          },
+        ],
+      });
 
       if (!student) {
         res.status(400).json({ errors: ["Estudante não encontrado"] });
