@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../utils/api";
 import styles from "./TurmaDetails.module.css";
-
+import useFlashMessage from "../../hooks/useFlashMessage";
 import { DataGrid } from "@mui/x-data-grid";
 
 const DetalhesAluno = () => {
   const { id } = useParams();
   const [aluno, setAluno] = useState({});
   const [professor, setProfessor] = useState({});
+  const { setFlashMessage } = useFlashMessage();
+
   const [turmas, setTurmas] = useState([]);
 
   const getAluno = async () => {
@@ -25,6 +27,29 @@ const DetalhesAluno = () => {
       });
   };
 
+  const refreshTurma = async () => {
+    await api.post("/classroom/insertStudents").then((response) => {
+      const newTurmas = [...turmas];
+      setTurmas(newTurmas);
+      return response.data;
+    });
+    getAluno();
+  };
+
+  const handleRefresh = async () => {
+    let msgType = "success";
+    let msgText = "Turmas atualizadas com sucesso.";
+
+    try {
+      refreshTurma();
+    } catch (error) {
+      msgText = "error";
+      msgText = "Houve um erro, tente novamente mais tarde.";
+    }
+
+    setFlashMessage(msgText, msgType);
+  };
+
   useEffect(() => {
     getAluno();
   }, []);
@@ -32,26 +57,6 @@ const DetalhesAluno = () => {
   if (!aluno || Object.keys(aluno).length === 0) {
     return <div>Carregando detalhes do aluno...</div>;
   }
-
-  // const detalhesAluno = {
-  //   id: aluno.id,
-  //   nome: aluno.nome,
-  //   email: aluno.email,
-  //   idade: aluno.idade,
-  //   categoria: aluno.categoria,
-  //   // Adicione outras informações do aluno conforme necessário
-  // };
-
-  // const columns = [
-  //   { field: "campo", headerName: "Campo", width: 150 },
-  //   { field: "valor", headerName: "Valor", width: 250 },
-  // ];
-
-  // const rows = Object.keys(detalhesAluno).map((campo) => ({
-  //   id: campo,
-  //   campo,
-  //   valor: detalhesAluno[campo],
-  // }));
 
   return (
     <>
@@ -66,6 +71,9 @@ const DetalhesAluno = () => {
         <div className={styles.students_container}>
           <div className={styles.students_header}>
             <h3>Turmas em que o aluno está inserido: </h3>
+            <button className={styles.att_alunos_btn} onClick={handleRefresh}>
+              Atualizar turmas desse aluno
+            </button>
           </div>
           <DataGrid
             disableRowSelectionOnClick
