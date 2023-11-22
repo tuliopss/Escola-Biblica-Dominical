@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const Classroom = require("../models/Classroom");
 const Student = require("../models/Student");
 const StudentController = require("./StudentController");
+const createUserToken = require("../helpers/createUserToken");
 
 module.exports = class TeacherController {
   static generateToken = (id) => {
@@ -17,9 +18,9 @@ module.exports = class TeacherController {
     const { nome, email, password, disciplina } = req.body;
 
     //check if teacher already exists
-    const teacher = await Teacher.findOne({ where: { email: email } });
+    const checkEmail = await Teacher.findOne({ where: { email: email } });
 
-    if (teacher) {
+    if (checkEmail) {
       res.status(422).json({ errors: ["Email já existente."] });
       return;
     }
@@ -28,18 +29,19 @@ module.exports = class TeacherController {
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
-    const newTeacher = {
+    const teacher = new Teacher({
       nome,
       email,
       password: passwordHash,
       disciplina,
-    };
+    });
 
     try {
-      await Teacher.create(newTeacher);
-      const token = TeacherController.generateToken(newTeacher.id);
+      const newTeacher = await teacher.save();
+      // const token = TeacherController.generateToken(newTeacher.id);
 
-      res.status(201).json({ id: newTeacher.id, token: token });
+      await createUserToken(newTeacher, req, res);
+      // res.status(201).json({ message: "Conta criada" });
     } catch (error) {
       res
         .status(400)
@@ -64,10 +66,11 @@ module.exports = class TeacherController {
       return;
     }
 
-    res.status(201).json({
-      id: teacher.id,
-      token: TeacherController.generateToken(teacher.id),
-    });
+    // res.status(201).json({
+    //   id: teacher.id,
+    //   token: TeacherController.generateToken(teacher.id),
+    // });
+    await createUserToken(teacher, req, res);
   }
 
   static async updateTeacher(req, res) {

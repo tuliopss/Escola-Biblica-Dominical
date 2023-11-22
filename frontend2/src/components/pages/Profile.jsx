@@ -63,8 +63,8 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    Promise.all([getTeacherProfile()]);
-  }, []);
+    getTeacherProfile();
+  }, [token]);
 
   const editUser = async (user) => {
     let msgType = "success";
@@ -102,9 +102,13 @@ const Profile = () => {
       </div>
 
       <div className={styles.profile_info}>
-        <p>Email: {user.email}</p>
-        <p>ID: {user.id}</p>
-        <p>Atualmente registrado em: {turmas.length} turmas </p>
+        {user && (
+          <>
+            <p>Email: {user.email}</p>
+            <p>ID: {user.id}</p>
+            <p>Atualmente registrado em: {turmas.length} turmas </p>
+          </>
+        )}
       </div>
 
       <form onSubmit={handleSubmit} className={styles.form_container}>

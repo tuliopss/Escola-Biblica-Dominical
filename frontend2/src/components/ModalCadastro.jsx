@@ -76,7 +76,6 @@ export default function ModalCadastro() {
                     name='email'
                     type='email'
                     placeholder='Email'
-                    id='email'
                     onChange={handleChange}
                   />
                   <br />

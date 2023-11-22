@@ -34,6 +34,7 @@ const useAuth = () => {
       msgType = "error";
     }
 
+    console.log(user.token);
     setFlashMessage(msgText, msgType);
   };
 

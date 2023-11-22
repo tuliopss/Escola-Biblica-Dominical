@@ -14,7 +14,7 @@ const {
 } = require("../middlewares/teachersValidations");
 
 router.get("/", authGuard, TeacherController.getAllTeachers);
-router.get("/bySubject", TeacherController.getTeachersBySubject);
+router.get("/bySubject", authGuard, TeacherController.getTeachersBySubject);
 router.get("/profile", authGuard, TeacherController.getCurrentUser);
 router.get("/:id/classrooms", authGuard, TeacherController.getTeacherClasses);
 
