@@ -11,21 +11,13 @@ const {
 const validate = require("../middlewares/handleValidation");
 
 router.get("/", authGuard, ClassroomController.getAllClasses);
-<<<<<<< HEAD
-=======
 router.get("/:id", authGuard, ClassroomController.getClassroomById);
->>>>>>> af0de3cbe67a7b8a99c75b4dc5695aaa04afd2d8
 router.get(
   "/:id/students",
   authGuard,
   ClassroomController.getStudentsFromClass
 );
 router.post(
-<<<<<<< HEAD
-  "/insertStudent/:id",
-  authGuard,
-  ClassroomController.insertStudentIntoClass
-=======
   "/createClassroom",
   authGuard,
   classroomCreateValidations(),
@@ -48,7 +40,6 @@ router.delete(
   "/deleteClassroom/:id",
   authGuard,
   ClassroomController.deleteClassroom
->>>>>>> af0de3cbe67a7b8a99c75b4dc5695aaa04afd2d8
 );
 router.delete(
   "/deleteStudent/:id",

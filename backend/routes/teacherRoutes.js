@@ -16,10 +16,7 @@ const {
 router.get("/", authGuard, TeacherController.getAllTeachers);
 router.get("/bySubject", authGuard, TeacherController.getTeachersBySubject);
 router.get("/profile", authGuard, TeacherController.getCurrentUser);
-<<<<<<< HEAD
-=======
 router.get("/:id/classrooms", authGuard, TeacherController.getTeacherClasses);
->>>>>>> af0de3cbe67a7b8a99c75b4dc5695aaa04afd2d8
 
 router.post(
   "/register",
