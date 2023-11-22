@@ -1,0 +1,60 @@
+.form_addTurma {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 100px;
+  padding: 1.2em;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.form_field {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  margin-bottom: 50px;
+}
+
+.form_field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form_field select {
+  font-weight: bold;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.form_field select option {
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+}
+
+form .btn_submit_form {
+  border-radius: 8px;
+  background-color: #254bb4;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  border: none;
+  min-width: 100px;
+  min-height: 2.5em;
+  width: 190px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+}

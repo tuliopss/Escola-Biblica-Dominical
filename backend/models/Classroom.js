@@ -31,13 +31,23 @@ const Teacher = require("./Teacher");
 const Classroom = db.define("turma", {
   disciplina: {
     type: DataTypes.ENUM([
-      "HISTORIA",
-      "GEOGRAFIA",
-      "PORTUGUES",
-      "MATEMATICA",
-      "Ciencias",
+      "Etica",
+      "Teologia",
+      "Evangelho",
+      "Criacao",
+      "Historia",
     ]),
-    required: true, // Correção aqui, de "require" para "required"
+    required: true,
+  },
+  categoria: {
+    type: DataTypes.ENUM([
+      "Principiantes",
+      "Juniores",
+      "Adolescentes",
+      "Jovens",
+      "Adultos",
+    ]),
+    required: true,
   },
 });
 

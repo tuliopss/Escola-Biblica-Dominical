@@ -31,8 +31,21 @@ Projeto de extensão Unifor. Sistema que atenderá as necessidades da Escola Bib
 
   • GET /classrooms/ --> retorna todas as turmas registradas no banco;
 
+<<<<<<< HEAD
   • GET /classrooms/:id/students --> retorna todos os estudantes de uma turma;
 
   • POST /classrooms/InsertStudent/:id --> insere um estudante em uma turma;
 
+=======
+  • GET /classrooms/:id/ --> retorna uma turma a partir do seu ID;
+
+  • GET /classrooms/:id/students --> retorna todos os estudantes de uma turma;
+
+  • POST /classrooms/createClassroom --> cria uma turma no banco de dados;
+
+  • POST /classrooms/InsertStudent/:id --> insere um estudante em uma turma;
+
+  • POST /classrooms/InsertTeacher/:id --> insere um professor em uma turma;
+
+>>>>>>> af0de3cbe67a7b8a99c75b4dc5695aaa04afd2d8
   • DELETE /classrooms/deleteStudent/:id --> remove um estudante de uma turma;

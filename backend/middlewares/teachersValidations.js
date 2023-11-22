@@ -26,6 +26,7 @@ const teacherCreateValidations = () => {
         }
         return true;
       }),
+    body("disciplina").isString().withMessage("A disciplina é obrigatória"),
   ];
 };
 
@@ -39,4 +40,32 @@ const loginValidation = () => {
     body("password").isString().withMessage("A senha é obrigatória"),
   ];
 };
-module.exports = { teacherCreateValidations, loginValidation };
+
+const teacherUpdateValidation = () => {
+  return [
+    body("nome")
+      .optional()
+      .isLength(2)
+      .withMessage("O nome precisa ter no mínimo 2 caracteres"),
+
+    body("password")
+      .optional()
+      .isLength({ min: 5 })
+      .withMessage("A senha precisa de no mínimo 5 caracteres"),
+
+    // body("confirmPassword")
+    //   .optional()
+    //   .withMessage("Confirme sua senha.")
+    //   .custom((value, { req }) => {
+    //     if (value != req.body.password) {
+    //       throw new Error("As senhas não são iguais.");
+    //     }
+    //     return true;
+    //   }),
+  ];
+};
+module.exports = {
+  teacherCreateValidations,
+  loginValidation,
+  teacherUpdateValidation,
+};

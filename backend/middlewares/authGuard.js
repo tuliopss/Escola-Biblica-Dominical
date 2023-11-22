@@ -9,10 +9,7 @@ const authGuard = async (req, res, next) => {
   const token = authHeader && authHeader.split(" ")[1];
 
   //check if a header has a token
-  if (!token) {
-    res.status(401).json({ errors: ["Acesso negado!"] });
-    return;
-  }
+  if (!token) return res.status(401).json({ errors: ["Acesso negado!"] });
 
   //check if token is valid
   try {

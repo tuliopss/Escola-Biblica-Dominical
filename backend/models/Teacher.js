@@ -16,13 +16,12 @@ const Teacher = db.define("professor", {
   },
   disciplina: {
     type: DataTypes.ENUM([
-      "HISTORIA",
-      "GEOGRAFIA",
-      "PORTUGUES",
-      "MATEMATICA",
-      "Ciencias",
+      "Etica",
+      "Teologia",
+      "Evangelho",
+      "Criacao",
+      "Historia",
     ]),
-    require: true,
   },
 });
 
