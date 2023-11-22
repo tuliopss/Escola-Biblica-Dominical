@@ -23,59 +23,40 @@ import AlunoDestalhes from "./components/pages/AlunoDetalhes";
 import AddAluno from "./components/pages/AddAluno";
 import EditAluno from "./components/pages/EditAluno";
 import useAuth from "./hooks/useAuth";
+import NoAuth from "./components/layouts/NoAuth";
 function App() {
-  const { authenticated } = useAuth();
+  const { authenticated } = useContext(Context);
 
   return (
-    <BrowserRouter>
-      <UserProvider>
+    <UserProvider>
+      {console.log("Authent", authenticated)}
+
+      <BrowserRouter>
         <Container>
           <Message />
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route
-              path='/turmas'
-              // element={authenticated ? <Turmas /> : <Home />}
-              element={authenticated ? <Turmas /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/turmas/:id'
-              element={authenticated ? <TurmaDetails /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/professores'
-              element={authenticated ? <TeacherList /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/addTurma'
-              element={authenticated ? <AddTurma /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/profile'
-              element={authenticated ? <Profile /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/alunos/dashboard'
-              element={authenticated ? <DashAlunos /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/alunos/create'
-              element={authenticated ? <AddAluno /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/alunos/update/:id'
-              element={authenticated ? <EditAluno /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/aluno/:id'
-              element={authenticated ? <AlunoDestalhes /> : <Navigate to='/' />}
-            />
+            {authenticated ? (
+              <>
+                <Route path='/turmas' element={<Turmas />} />
+                <Route path='/turmas/:id' element={<TurmaDetails />} />
+                <Route path='/professores' element={<TeacherList />} />
+                <Route path='/addTurma' element={<AddTurma />} />
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/alunos/dashboard' element={<DashAlunos />} />
+                <Route path='/alunos/create' element={<AddAluno />} />
+                <Route path='/alunos/update/:id' element={<EditAluno />} />
+                <Route path='/aluno/:id' element={<AlunoDestalhes />} />
+              </>
+            ) : (
+              <></>
+            )}
           </Routes>
         </Container>
         <Footer />
-      </UserProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

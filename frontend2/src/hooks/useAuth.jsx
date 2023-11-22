@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../utils/api";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useNavigation } from "react-router-dom";
 
 import React from "react";
 import useFlashMessage from "./useFlashMessage";
@@ -8,12 +8,11 @@ import useFlashMessage from "./useFlashMessage";
 const useAuth = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const { setFlashMessage } = useFlashMessage();
-
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      api.defaults.headers.authorization = `Bearer ${JSON.parse(token)}`;
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
       setAuthenticated(true);
     }
   }, []);

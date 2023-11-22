@@ -15,7 +15,7 @@ const Navbar = () => {
             src='../../../public/EBDlogo.jpg'
             className='img_logo'
             alt=''
-            srcset=''
+            srcSet=''
           />
           Escola Bíblica Dominical
         </Link>

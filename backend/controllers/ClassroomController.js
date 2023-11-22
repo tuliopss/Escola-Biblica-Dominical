@@ -1,3 +1,5 @@
+const getTeacherByToken = require("../helpers/getTeacherByToken");
+const getToken = require("../helpers/getToken");
 const Classroom = require("../models/Classroom");
 const Student = require("../models/Student");
 const Teacher = require("../models/Teacher");
@@ -209,7 +211,16 @@ module.exports = class ClassroomController {
       res.status(404).json({ errors: ["Turma não encontrada"] });
     }
 
+    const token = getToken(req);
+    const teacher = await getTeacherByToken(token);
+
     try {
+      if (classroom.professorId != teacher.id) {
+        res.status(422).json({
+          errors: ["Você não pode excluir uma turma de outro professor!"],
+        });
+        return;
+      }
       await Classroom.destroy({ where: { id: classroom.id } });
 
       res.status(200).json({ message: "Turma excluída com sucesso." });

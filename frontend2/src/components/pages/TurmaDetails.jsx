@@ -73,20 +73,22 @@ const TurmaDetails = () => {
 
   const deleteTurma = async () => {
     let msgType = "success";
-
+    let msgText;
     const data = await api
       .delete(`/classroom/deleteClassroom/${id}`)
       .then((response) => {
         navigate("/turmas");
-
+        msgText = response.data.message;
         return response.data;
       })
       .catch((error) => {
         msgType = "error";
-        return error.response.data;
+        // console.log(error.response.data.errors[0]);
+        msgText = error.response.data.errors[0];
+        // msgText = error.response.data.errors[0];
       });
 
-    setFlashMessage(data.message, msgType);
+    setFlashMessage(msgText, msgType);
     if (msgType != "error") {
       navigate("/turmas");
     }

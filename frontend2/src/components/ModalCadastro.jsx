@@ -62,6 +62,7 @@ export default function ModalCadastro() {
 
                   <input
                     className='input'
+                    autoComplete='off'
                     type='text'
                     name='nome'
                     placeholder='Nome'
@@ -71,6 +72,7 @@ export default function ModalCadastro() {
 
                   <input
                     className='input'
+                    autoComplete='off'
                     name='email'
                     type='email'
                     placeholder='Email'
