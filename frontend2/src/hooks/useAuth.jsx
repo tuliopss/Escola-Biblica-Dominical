@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../utils/api";
-import { Navigate, useNavigate, useNavigation } from "react-router-dom";
+import {
+  Navigate,
+  redirect,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 
 import React from "react";
 import useFlashMessage from "./useFlashMessage";
@@ -8,6 +13,7 @@ import useFlashMessage from "./useFlashMessage";
 const useAuth = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const { setFlashMessage } = useFlashMessage();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 

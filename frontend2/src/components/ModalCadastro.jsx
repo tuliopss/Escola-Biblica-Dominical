@@ -58,7 +58,7 @@ export default function ModalCadastro() {
             <div className='modal-content'>
               <form onSubmit={handleSubmit} id='form' method='post'>
                 <div className='box' id='divForm'>
-                  <h3 className='text-login'>Cadastrar</h3>
+                  <h3 className='text-login'>Cadastrar como professor</h3>
 
                   <input
                     className='input'

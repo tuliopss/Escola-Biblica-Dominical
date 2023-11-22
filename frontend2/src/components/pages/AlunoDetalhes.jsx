@@ -11,12 +11,15 @@ const DetalhesAluno = () => {
   const [professor, setProfessor] = useState({});
   const { setFlashMessage } = useFlashMessage();
   const [token] = useState(localStorage.getItem("token") || "");
-
   const [turmas, setTurmas] = useState([]);
 
   const getAluno = async () => {
     api
-      .get(`/student/${id}`)
+      .get(`/student/${id}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
         setAluno(response.data);
@@ -61,45 +64,47 @@ const DetalhesAluno = () => {
 
   return (
     <>
-      <section className={styles.turma_details_container}>
-        <div className={styles.turma_info}>
-          <h2>Dados do aluno {aluno.nome}</h2>
-          <p>E-mail: {aluno.email}</p>
-          <p>Idade: {aluno.idade}</p>
-          <p>Categoria: {aluno.categoria}</p>
-        </div>
-
-        <div className={styles.students_container}>
-          <div className={styles.students_header}>
-            <h3>Turmas em que o aluno está inserido: </h3>
-            <button className={styles.att_alunos_btn} onClick={handleRefresh}>
-              Atualizar turmas desse aluno
-            </button>
+      {aluno && (
+        <section className={styles.turma_details_container}>
+          <div className={styles.turma_info}>
+            <h2>Dados do aluno {aluno.nome}</h2>
+            <p>E-mail: {aluno.email}</p>
+            <p>Idade: {aluno.idade}</p>
+            <p>Categoria: {aluno.categoria}</p>
           </div>
-          <DataGrid
-            disableRowSelectionOnClick
-            rows={turmas}
-            columns={[
-              { field: "id", headerName: "ID", flex: 0.2, width: 100 },
-              {
-                field: "disciplina",
-                headerName: "Disciplina",
-                flex: 1,
-                width: 200,
-              },
-              {
-                field: "professor",
-                headerName: "Professor",
-                flex: 2,
-                width: 200,
-                renderCell: (params) => {
-                  return <span>{params.row.professor.nome}</span>;
+
+          <div className={styles.students_container}>
+            <div className={styles.students_header}>
+              <h3>Turmas em que o aluno está inserido: </h3>
+              <button className={styles.att_alunos_btn} onClick={handleRefresh}>
+                Atualizar turmas desse aluno
+              </button>
+            </div>
+            <DataGrid
+              disableRowSelectionOnClick
+              rows={turmas}
+              columns={[
+                { field: "id", headerName: "ID", flex: 0.2, width: 100 },
+                {
+                  field: "disciplina",
+                  headerName: "Disciplina",
+                  flex: 1,
+                  width: 200,
                 },
-              },
-            ]}
-          />
-        </div>
-      </section>
+                {
+                  field: "professor",
+                  headerName: "Professor",
+                  flex: 2,
+                  width: 200,
+                  renderCell: (params) => {
+                    return <span>{params.row.professor.nome}</span>;
+                  },
+                },
+              ]}
+            />
+          </div>
+        </section>
+      )}
     </>
   );
 };

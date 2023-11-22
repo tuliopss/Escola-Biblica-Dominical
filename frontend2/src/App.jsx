@@ -29,8 +29,6 @@ function App() {
 
   return (
     <UserProvider>
-      {console.log("Authent", authenticated)}
-
       <BrowserRouter>
         <Container>
           <Message />
@@ -45,9 +43,10 @@ function App() {
                 <Route path='/addTurma' element={<AddTurma />} />
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/alunos/dashboard' element={<DashAlunos />} />
+                <Route path='/aluno/:id' element={<AlunoDestalhes />} />
+
                 <Route path='/alunos/create' element={<AddAluno />} />
                 <Route path='/alunos/update/:id' element={<EditAluno />} />
-                <Route path='/aluno/:id' element={<AlunoDestalhes />} />
               </>
             ) : (
               <></>
